@@ -1,15 +1,33 @@
 <#
 
 .SYNOPSIS
-Creates a new status.
-.EXAMPLE
-New-InsightStatuses -Name "My New Status" -Description "Sample Status" -category Active -InsightApiKey $InsightApiKey
+Resource to create a status in Insight.
+
+.DESCRIPTION
+Resource to create a status in Insight.
+
+.PARAMETER Name
+The Status Name.
+
+.PARAMETER Description
+The Status Description.
+
+.PARAMETER Category
+The status Category.
+
+.PARAMETER InsightApiKey
+The Api Secret.
+
 .OUTPUTS
 id name          description   category
 -- ----          -----------   --------
  8 My New Status Sample Status        1
+
 .LINK
 https://documentation.mindville.com/display/INSCLOUD/REST+API+-+Statuses
+
+.EXAMPLE
+New-InsightStatuses -Name "My New Status" -Description "Sample Status" -category Active -InsightApiKey $InsightApiKey
 
 #>
 
@@ -31,6 +49,7 @@ function New-InsightStatuses {
         [String]$category,
 
         [ValidateNotNullOrEmpty()]
+        [Alias('ApiKey')]
         [string]$InsightApiKey
     )
     
