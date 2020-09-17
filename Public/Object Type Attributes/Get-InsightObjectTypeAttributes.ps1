@@ -1,9 +1,17 @@
 <#
 
 .SYNOPSIS
-Get the objects attributes.
-.EXAMPLE
-Get-InsightObjectTypeAttributes -ID 2 -InsightApiKey $InsightApiKey
+Resource to find Object Type Attributes for a specified Object Type in Insight.
+
+.DESCRIPTION
+Resource to find Object Type Attributes for a specified Object Type in Insight.
+
+.PARAMETER ID
+The Object Type ID.
+
+.PARAMETER InsightApiKey
+The Api key.
+
 .OUTPUTS
 id                      : 7
 objectType              : @{id=2; name=My Object Type; type=0; description=A Sample Object Type; icon=; position=0; created=2020-09-16T07:14:02.118Z; updated=2020-09-16T07:14:02.118Z; objectCount=0; objectSchemaId=3; inherited=False; 
@@ -48,52 +56,13 @@ uniqueAttribute         : False
 options                 : 
 position                : 1
 
-id                      : 9
-objectType              : @{id=2; name=My Object Type; type=0; description=A Sample Object Type; icon=; position=0; created=2020-09-16T07:14:02.118Z; updated=2020-09-16T07:14:02.118Z; objectCount=0; objectSchemaId=3; inherited=False; 
-                          abstractObjectType=False; parentObjectTypeInherited=False}
-name                    : Created
-label                   : False
-type                    : 0
-defaultType             : @{id=6; name=DateTime}
-editable                : False
-system                  : True
-sortable                : True
-summable                : False
-indexed                 : True
-minimumCardinality      : 1
-maximumCardinality      : 1
-removable               : False
-hidden                  : False
-includeChildObjectTypes : False
-uniqueAttribute         : False
-options                 : 
-position                : 2
-
-id                      : 10
-objectType              : @{id=2; name=My Object Type; type=0; description=A Sample Object Type; icon=; position=0; created=2020-09-16T07:14:02.118Z; updated=2020-09-16T07:14:02.118Z; objectCount=0; objectSchemaId=3; inherited=False; 
-                          abstractObjectType=False; parentObjectTypeInherited=False}
-name                    : Updated
-label                   : False
-type                    : 0
-defaultType             : @{id=6; name=DateTime}
-editable                : False
-system                  : True
-sortable                : True
-summable                : False
-indexed                 : True
-minimumCardinality      : 1
-maximumCardinality      : 1
-removable               : False
-hidden                  : False
-includeChildObjectTypes : False
-uniqueAttribute         : False
-options                 : 
-position                : 3
 .LINK
 https://documentation.mindville.com/display/INSCLOUD/REST+API+-+Object+type+attributes
 
-#>
+.EXAMPLE
+Get-InsightObjectTypeAttributes -ID 2 -InsightApiKey $InsightApiKey
 
+#>
 
 function Get-InsightObjectTypeAttributes {
     [CmdletBinding()]
@@ -103,6 +72,7 @@ function Get-InsightObjectTypeAttributes {
         [int]$ID,
 
         [ValidateNotNullOrEmpty()]
+        [Alias('ApiKey')]
         [string]$InsightApiKey
     )
     
