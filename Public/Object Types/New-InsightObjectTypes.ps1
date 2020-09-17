@@ -1,9 +1,29 @@
 <#
 
 .SYNOPSIS
-Creates a new object type.
-.EXAMPLE
-New-InsightObjectTypes -Name "My Object Type" -Description "A Sample Object Type" -IconID 1 -objectSchemaId 3 -InsightApiKey $InsightApiKey
+Resource to create an object type in Insight.
+
+.DESCRIPTION
+Resource to create an object type in Insight.
+
+.PARAMETER Name
+The object type name.
+
+.PARAMETER Description
+The object type description.
+
+.PARAMETER IconID
+The object type icon ID.
+
+.PARAMETER ParentObjectTypeID
+The parent object type id that new object will be placed in
+
+.PARAMETER objectSchemaId
+The object schema id
+
+.PARAMETER InsightApiKey
+The Api key.
+
 .OUTPUTS
 id                        : 1
 name                      : My Object Type
@@ -24,8 +44,12 @@ objectSchemaId            : 3
 inherited                 : False
 abstractObjectType        : False
 parentObjectTypeInherited : False
+
 .LINK
 https://documentation.mindville.com/display/INSCLOUD/REST+API+-+Object+types
+
+.EXAMPLE
+New-InsightObjectTypes -Name "My Object Type" -Description "A Sample Object Type" -IconID 1 -objectSchemaId 3 -InsightApiKey $InsightApiKey
 
 #>
 
@@ -52,6 +76,7 @@ function New-InsightObjectTypes {
         [int]$objectSchemaId,
 
         [ValidateNotNullOrEmpty()]
+        [Alias('ApiKey')]
         [string]$InsightApiKey
     )
     
