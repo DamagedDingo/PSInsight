@@ -1,19 +1,6 @@
 <#
 
 .SYNOPSIS
-Get avalible Insight Icons and there corrisponding ID.
-.EXAMPLE
-$Headers = 
-.OUTPUTS
-Something something.
-.LINK
-
-
-#>
-
-<#
-
-.SYNOPSIS
 Resource to find global Icons in Insight.
 
 .DESCRIPTION
