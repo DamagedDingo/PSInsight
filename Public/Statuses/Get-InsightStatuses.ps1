@@ -1,9 +1,14 @@
 <#
 
 .SYNOPSIS
-Get Insight statuses.
-.EXAMPLE
-Get-InsightObjectTypes -InsightApiKey $InsightApiKey
+Resource to load a status in Insight.
+
+.DESCRIPTION
+Resource to load a status in Insight.
+
+.PARAMETER InsightApiKey
+The Api key.
+
 .OUTPUTS
 id name              description category
 -- ----              ----------- --------
@@ -14,8 +19,12 @@ id name              description category
  5 Running                              1
  6 Stopped                              0
  7 Support Requested                    2
+
 .LINK
 https://documentation.mindville.com/display/INSCLOUD/REST+API+-+Statuses
+
+.EXAMPLE
+Get-InsightObjectTypes -InsightApiKey $InsightApiKey
 
 #>
 
@@ -23,6 +32,7 @@ function Get-InsightObjectTypes {
     [CmdletBinding()]
     param (
         [ValidateNotNullOrEmpty()]
+        [Alias('ApiKey')]
         [string]$InsightApiKey
     )
     

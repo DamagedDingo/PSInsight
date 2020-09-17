@@ -1,12 +1,25 @@
 <#
 
 .SYNOPSIS
-Removes a status.
-.EXAMPLE
-Remove-InsightObjectTypes -ID 8 -InsightApiKey $InsightApiKey
+Resource to delete a status in Insight.
+
+.DESCRIPTION
+Resource to delete a status in Insight.
+
+.PARAMETER ID
+The status ID.
+
+.PARAMETER InsightApiKey
+The Api key.
+
 .OUTPUTS
+No output from API
+
 .LINK
 https://documentation.mindville.com/display/INSCLOUD/REST+API+-+Statuses
+
+.EXAMPLE
+Remove-InsightObjectTypes -ID 8 -InsightApiKey $InsightApiKey
 
 #>
 
@@ -19,6 +32,7 @@ function Remove-InsightObjectTypes {
         [string]$ID,
 
         [ValidateNotNullOrEmpty()]
+        [Alias('ApiKey')]
         [string]$InsightApiKey
     )
     

@@ -1,18 +1,38 @@
 <#
 
 .SYNOPSIS
-Updates a status.
-.EXAMPLE
-Set-InsightStatuses -ID 8 -Name "My New Status" -Description "Sample Status - Updated" -category Active -InsightApiKey $InsightApiKey
+Resource to update a status in Insight.
+
+.DESCRIPTION
+Resource to update a status in Insight.
+
+.PARAMETER ID
+The status ID.
+
+.PARAMETER Name
+The status name.
+
+.PARAMETER Description
+The status description
+
+.PARAMETER Category
+The status category.
+
+.PARAMETER InsightApiKey
+The Api key.
+
 .OUTPUTS
 id name          description             category
 -- ----          -----------             --------
  8 My New Status Sample Status - Updated        1
+
 .LINK
 https://documentation.mindville.com/display/INSCLOUD/REST+API+-+Statuses
 
-#>
+.EXAMPLE
+Set-InsightStatuses -ID 8 -Name "My New Status" -Description "Sample Status - Updated" -category Active -InsightApiKey $InsightApiKey
 
+#>
 
 function Set-InsightStatuses {
     [CmdletBinding()]
@@ -32,9 +52,10 @@ function Set-InsightStatuses {
         [ValidateNotNullOrEmpty()]
         [Parameter(Mandatory = $true)]
         [Validateset("Inactive","Active","Pending")]
-        [String]$category,
+        [String]$Category,
 
         [ValidateNotNullOrEmpty()]
+        [Alias('ApiKey')]
         [string]$InsightApiKey
     )
     
