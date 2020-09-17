@@ -1,9 +1,14 @@
 <#
 
 .SYNOPSIS
-Get the object schema.
-.EXAMPLE
-Get-InsightObjectSchema -InsightApiKey $InsightApiKey
+Resource to find object schemas in Insight for a specific object schema. The object schemas are responded in a list.
+
+.DESCRIPTION
+Resource to find object schemas in Insight for a specific object schema. The object schemas are responded in a list.
+
+.PARAMETER InsightApiKey
+The Api key.
+
 .OUTPUTS
 id              : 3
 name            : MyObjectSchema
@@ -14,8 +19,12 @@ created         : 2020-09-16T00:50:30.919Z
 updated         : 2020-09-16T01:56:33.430Z
 objectCount     : 0
 objectTypeCount : 1
+
 .LINK
 https://documentation.mindville.com/display/INSCLOUD/REST+API+-+Object+schema
+
+.EXAMPLE
+Get-InsightObjectSchema -InsightApiKey $InsightApiKey
 
 #>
 
@@ -23,6 +32,7 @@ function Get-InsightObjectSchema {
     [CmdletBinding()]
     param (
         [ValidateNotNullOrEmpty()]
+        [Alias('ApiKey')]
         [string]$InsightApiKey
     )
     

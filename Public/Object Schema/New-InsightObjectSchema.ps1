@@ -1,9 +1,23 @@
 <#
 
 .SYNOPSIS
-Creates a new object schema
-.EXAMPLE
-New-InsightObjectSchema -Name "MyObjectSchema" -ObjectSchemaKey "NAS" -Description "My New Object Schema" -InsightApiKey $InsightApiKey
+Resource to create an object schema in Insight.
+
+.DESCRIPTION
+Resource to create an object schema in Insight.
+
+.PARAMETER Name
+The object schema name.
+
+.PARAMETER ObjectSchemaKey
+The object schema key.
+
+.PARAMETER Description
+The object schema description.
+
+.PARAMETER InsightApiKey
+The Api key.
+
 .OUTPUTS
 id              : 1
 name            : CMDB
@@ -14,11 +28,14 @@ created         : 2020-09-16T00:22:31.948Z
 updated         : 2020-09-16T00:22:31.963Z
 objectCount     : 0
 objectTypeCount : 0
+
 .LINK
 https://documentation.mindville.com/display/INSCLOUD/REST+API+-+Object+schema
 
-#>
+.EXAMPLE
+New-InsightObjectSchema -Name "MyObjectSchema" -ObjectSchemaKey "NAS" -Description "My New Object Schema" -InsightApiKey $InsightApiKey
 
+#>
 
 function New-InsightObjectSchema {
     [CmdletBinding()]
@@ -35,6 +52,7 @@ function New-InsightObjectSchema {
         [string]$Description,
 
         [ValidateNotNullOrEmpty()]
+        [Alias('ApiKey')]
         [string]$InsightApiKey
     )
     

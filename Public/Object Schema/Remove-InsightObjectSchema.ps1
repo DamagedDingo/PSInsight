@@ -1,9 +1,17 @@
 <#
 
 .SYNOPSIS
-Removes a object schema
-.EXAMPLE
-Remove-InsightObjectSchema -ID 1 -InsightApiKey $InsightApiKey
+Resource to delete an object schema in Insight.
+
+.DESCRIPTION
+Resource to delete an object schema in Insight.
+
+.PARAMETER ID
+The object schema ID.
+
+.PARAMETER InsightApiKey
+The Api key.
+
 .OUTPUTS
 id              : 1
 name            : CMDB
@@ -14,11 +22,14 @@ created         : 2020-09-16T00:22:31.948Z
 updated         : 2020-09-16T00:22:31.963Z
 objectCount     : 0
 objectTypeCount : 0
+
 .LINK
 https://documentation.mindville.com/display/INSCLOUD/REST+API+-+Object+schema
 
-#>
+.EXAMPLE
+Remove-InsightObjectSchema -ID 1 -InsightApiKey $InsightApiKey
 
+#>
 
 function Remove-InsightObjectSchema {
     [CmdletBinding()]
@@ -28,6 +39,7 @@ function Remove-InsightObjectSchema {
         [int]$ID,
 
         [ValidateNotNullOrEmpty()]
+        [Alias('ApiKey')]
         [string]$InsightApiKey
     )
     

@@ -1,9 +1,17 @@
 <#
 
 .SYNOPSIS
-Sets\Updates object schema
-.EXAMPLE
-Set-InsightObjectSchema -ID 3 -Name "MyObjectSchema" -ObjectSchemaKey "MOS" -Description "My New Object Schema - Updated" -InsightApiKey $InsightApiKey
+Resource to update an object schema in Insight.
+
+.DESCRIPTION
+Resource to update an object schema in Insight.
+
+.PARAMETER ID
+The id of the schema.
+
+.PARAMETER InsightApiKey
+The Api key.
+
 .OUTPUTS
 id              : 1
 name            : MyObjectSchema
@@ -14,11 +22,14 @@ created         : 2020-09-16T00:22:31.948Z
 updated         : 2020-09-16T00:22:31.963Z
 objectCount     : 0
 objectTypeCount : 0
+
 .LINK
 https://documentation.mindville.com/display/INSCLOUD/REST+API+-+Object+schema
 
-#>
+.EXAMPLE
+Set-InsightObjectSchema -ID 3 -Name "MyObjectSchema" -ObjectSchemaKey "MOS" -Description "My New Object Schema - Updated" -InsightApiKey $InsightApiKey
 
+#>
 
 function Set-InsightObjectSchema {
     [CmdletBinding()]
@@ -39,6 +50,7 @@ function Set-InsightObjectSchema {
         [string]$Description,
 
         [ValidateNotNullOrEmpty()]
+        [Alias('ApiKey')]
         [string]$InsightApiKey
     )
     
