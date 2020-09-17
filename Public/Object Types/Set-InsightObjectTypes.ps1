@@ -1,9 +1,26 @@
 <#
 
 .SYNOPSIS
-Updates a object type.
-.EXAMPLE
-Set-InsightObjectTypes -ID 1 -Name "My Object Type" -Description "A Sample Object Type - Updated" -IconID 1 -InsightApiKey $InsightApiKey
+Resource to create an object type in Insight.
+
+.DESCRIPTION
+Resource to create an object type in Insight.
+
+.PARAMETER ID
+The object type ID.
+
+.PARAMETER Name
+The status Name.
+
+.PARAMETER Description
+The object type Description.
+
+.PARAMETER IconID
+The object type IconID (Can be collected via Get-InsightIcons).
+
+.PARAMETER InsightApiKey
+The Api key.
+
 .OUTPUTS
 id                        : 1
 name                      : My Object Type
@@ -24,11 +41,14 @@ objectSchemaId            : 3
 inherited                 : False
 abstractObjectType        : False
 parentObjectTypeInherited : False
+
 .LINK
 https://documentation.mindville.com/display/INSCLOUD/REST+API+-+Object+types
 
-#>
+.EXAMPLE
+Set-InsightObjectTypes -ID 1 -Name "My Object Type" -Description "A Sample Object Type - Updated" -IconID 1 -InsightApiKey $InsightApiKey
 
+#>
 
 function Set-InsightObjectTypes {
     [CmdletBinding()]
@@ -49,6 +69,7 @@ function Set-InsightObjectTypes {
         [int]$IconID,
 
         [ValidateNotNullOrEmpty()]
+        [Alias('ApiKey')]
         [string]$InsightApiKey
     )
     
