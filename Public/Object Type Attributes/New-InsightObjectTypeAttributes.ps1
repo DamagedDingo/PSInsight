@@ -32,6 +32,98 @@ https://documentation.mindville.com/display/INSCLOUD/REST+API+-+Object+type+attr
 
 #>
 
+<#
+
+.SYNOPSIS
+Resource to create an object type attribute in Insight.
+
+.DESCRIPTION
+Resource to create an object type attribute in Insight.
+
+.PARAMETER Name
+The name.
+
+.PARAMETER Type
+The type. ["Default", "Object", "User", "Confluence", "Group", "Status"]
+
+.PARAMETER ParentObjectTypeId
+The Object type ID of the Parent
+
+.PARAMETER defaultType
+The default type id. Dynamic Parameter if 'Type' is 'Default' ["Text", "Integer", "Boolean", "Double", "Date", "Time", "Date_Time", "URL", "Email", "TextArea", "Select", "IP_Address"]
+
+.PARAMETER typeValue
+The referenced object type id. Dynamic Parameter if 'Type' is 'Object'
+
+.PARAMETER typeValueMulti
+The JIRA groups to restrict selection. Dynamic Parameter if 'Type' is 'User'
+
+.PARAMETER additionalValue. Dynamic Parameter if 'Type' is 'Object','URL' or 'Confluence'
+URL: DISABLED, ENABLED
+OBJECT: Reference Type Id
+User: SHOW_PROFILE, HIDE_PROFILE
+Confluence: Confluence Space Id
+
+.PARAMETER minimumCardinality. Dynamic Parameter if 'Type' is 'Email','Select','Object','User','Group','Version','Project'
+The minimum cardinality (default 0)
+
+.PARAMETER maximumCardinality. Dynamic Parameter if 'Type' is 'Email','Select','Object','User','Group','Version','Project'
+The maximum cardinality (default 1)
+
+.PARAMETER suffix
+If suffix on value types (Integer, Float). Dynamic Parameter if 'Default Type' is 'Integer' or 'Float'
+
+.PARAMETER includeChildObjectTypes
+If objects should be valid for object type children. Dynamic Parameter if 'Type' is 'Object'
+
+.PARAMETER iql
+If objects should be filtered by IQL. Dynamic Parameter if 'Type' is 'Object'
+
+.PARAMETER uniqueAttribute
+If the attribute should be unique (true, false)
+
+.PARAMETER summable
+If a sum should be shown in list view (true, false). Dynamic Parameter if 'Default Type' is 'Integer' or 'Float'
+
+.PARAMETER regexValidation. Dynamic Parameter if 'Type' is 'Text' or 'Email'
+If a regex validation should apply
+
+.PARAMETER options. Dynamic Parameter if 'Type' is 'Options'
+The options for the attribute in comma separate list
+
+.PARAMETER InsightApiKey
+The Api key.
+
+.OUTPUTS
+id                      : 6
+name                    : Test Attribute
+label                   : False
+type                    : 0
+defaultType             : @{id=0; name=Text}
+editable                : True
+system                  : False
+sortable                : True
+summable                : False
+indexed                 : True
+minimumCardinality      : 0
+maximumCardinality      : 1
+removable               : True
+hidden                  : False
+includeChildObjectTypes : False
+uniqueAttribute         : False
+options                 : 
+position                : 4
+
+.LINK
+https://documentation.mindville.com/display/INSCLOUD/REST+API+-+Object+type+attributes
+
+.EXAMPLE
+New-InsightObjectTypeAttributes -Name "Test Attribute" -Type Default -DefaultType Text -ObjectTypeId 1 -InsightApiKey $InsightApiKey
+New-InsightObjectTypeAttributes -Name "Email Address" -Type Default -DefaultType Email -ParentObjectTypeId 1 -InsightApiKey $InsightApiKey
+New-InsightObjectTypeAttributes -Name "Link to Parent" -Type Object -typeValue 2 -ParentObjectTypeId 1 -InsightApiKey $InsightApiKey
+
+#>
+
 
 function New-InsightObjectTypeAttributes {
     [CmdletBinding()]
@@ -49,6 +141,7 @@ function New-InsightObjectTypeAttributes {
         [int]$ParentObjectTypeId,
 
         [ValidateNotNullOrEmpty()]
+        [Alias('ApiKey')]
         [string]$InsightApiKey
     )
     DynamicParam {

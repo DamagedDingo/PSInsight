@@ -1,16 +1,27 @@
 <#
 
 .SYNOPSIS
-Removes a new object type attribute.
-.EXAMPLE
-Remove-InsightObjectTypeAttributes -ID 11 -InsightApiKey $InsightApiKey
+Resource to delete an object type attribute in Insight.
+
+.DESCRIPTION
+Resource to delete an object type attribute in Insight.
+
+.PARAMETER ID
+The Object Type Attribute ID.
+
+.PARAMETER InsightApiKey
+The Api key.
+
 .OUTPUTS
+No output from API
 
 .LINK
 https://documentation.mindville.com/display/INSCLOUD/REST+API+-+Object+type+attributes
 
-#>
+.EXAMPLE
+Remove-InsightObjectTypeAttributes -ID 11 -InsightApiKey $InsightApiKey
 
+#>
 
 function Remove-InsightObjectTypeAttributes {
     [CmdletBinding()]
@@ -20,6 +31,7 @@ function Remove-InsightObjectTypeAttributes {
         [string]$ID,
 
         [ValidateNotNullOrEmpty()]
+        [Alias('ApiKey')]
         [string]$InsightApiKey
     )
     
