@@ -58,7 +58,7 @@ function New-InsightObjectSchema {
     
     begin {
         #Generate Headers
-        $headers = New-InsightHeaders -ApiKey $InsightApiKey
+        $headers = New-InsightHeaders -InsightApiKey $InsightApiKey
     }
     
     process {
