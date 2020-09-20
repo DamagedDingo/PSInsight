@@ -2,10 +2,10 @@
 <#
 
 .SYNOPSIS
-Sample
+Resource to create object in Insight.
 
 .DESCRIPTION
-Sample
+Resource to create object in Insight.
 
 .PARAMETER objectTypeId
 The Object Type ID
@@ -63,7 +63,7 @@ function New-InsightObject {
     
     begin {
         #Generate Headers
-        $headers = New-InsightHeaders -ApiKey $InsightApiKey
+        $headers = New-InsightHeaders -InsightApiKey $InsightApiKey
     }
     
     process {
