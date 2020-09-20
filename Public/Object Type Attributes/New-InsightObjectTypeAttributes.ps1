@@ -1,40 +1,6 @@
 <#
 
 .SYNOPSIS
-Creates a new object type attribute.
-There are so many possible combinations. please review the link for further information
-.EXAMPLE
-New-InsightObjectTypeAttributes -Name "Test Attribute" -Type Default -DefaultType Text -ObjectTypeId 1 -InsightApiKey $InsightApiKey
-New-InsightObjectTypeAttributes -Name "Email Address" -Type Default -DefaultType Email -ParentObjectTypeId 1 -InsightApiKey $InsightApiKey
-New-InsightObjectTypeAttributes -Name "Link to Parent" -Type Object -typeValue 2 -ParentObjectTypeId 1 -InsightApiKey $InsightApiKey
-
-.OUTPUTS
-id                      : 6
-name                    : Test Attribute
-label                   : False
-type                    : 0
-defaultType             : @{id=0; name=Text}
-editable                : True
-system                  : False
-sortable                : True
-summable                : False
-indexed                 : True
-minimumCardinality      : 0
-maximumCardinality      : 1
-removable               : True
-hidden                  : False
-includeChildObjectTypes : False
-uniqueAttribute         : False
-options                 : 
-position                : 4
-.LINK
-https://documentation.mindville.com/display/INSCLOUD/REST+API+-+Object+type+attributes
-
-#>
-
-<#
-
-.SYNOPSIS
 Resource to create an object type attribute in Insight.
 
 .DESCRIPTION
@@ -467,7 +433,7 @@ function New-InsightObjectTypeAttributes {
             "IP Address" { $DefaultTypeID = "11" }
         } 
         #Generate Headers
-        $headers = New-InsightHeaders -ApiKey $InsightApiKey
+        $headers = New-InsightHeaders -InsightApiKey $InsightApiKey
     }
     
     process {
