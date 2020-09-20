@@ -44,38 +44,46 @@ New-InsightObjectSchema -Name "MyObjSch" -ObjectSchemaKey "MOS" -Description "Ne
 Use get-help for more information about each function.
 
 ## Icons ##
+```
 Get-InsightIcons  
-
+```
 ## Object Schema ##
+```
 Get-InsightObjectSchema
 New-InsightObjectSchema
 Remove-InsightObjectSchema
 Set-InsightObjectSchema
-
+```
 ## Object Type Attributes ##
+```
 Get-InsightObjectTypeAttributes
 New-InsightObjectTypeAttributes
 Remove-InsightObjectTypeAttributes
 Set-InsightObjectTypeAttributes
-
+```
 ## Object Types ##
+```
 Get-InsightObjectTypes
 New-InsightObjectTypes
 Remove-InsightObjectTypes
 Set-InsightObjectTypes
-
+```
 ## Objects ##
+```
 Get-InsightObject
 New-InsightObject
 New-InsightObjectAttribute
 Remove-InsightObject
 Set-InsightObject
-
+```
 ## Statuses ##
+```
 Get-InsightStatuses
 New-InsightStatuses
 Remove-InsightStatuses
 Set-InsightStatuses
-
+```
 ## Private ##
+```
 New-InsightHeaders
+```
