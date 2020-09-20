@@ -24,7 +24,7 @@ Import the module.
 Import-Module PSInsight
 ```
 
-# Using your API Key and API Secret #
+# Using your API Key #
 Almost all commands require an API key. 
   
 For ease of use, each command looks for the variable automatically in the following order:  
