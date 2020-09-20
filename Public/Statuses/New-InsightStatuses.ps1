@@ -55,7 +55,7 @@ function New-InsightStatuses {
     
     begin {
         #Generate Headers
-        $headers = New-InsightHeaders -ApiKey $InsightApiKey
+        $headers = New-InsightHeaders -InsightApiKey $InsightApiKey
 
         switch ($category) {
             "Inactive" { $CategoryID = 0 }
