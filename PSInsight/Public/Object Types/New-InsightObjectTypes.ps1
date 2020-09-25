@@ -64,14 +64,14 @@ New-InsightObjectTypes -Name "My Object Type" -Description "A Sample Object Type
 
         [ValidateNotNullOrEmpty()]
         [Parameter(Mandatory = $true)]
-        [int]$IconID,
+        $IconID,
 
         [Parameter(Mandatory = $false)]
-        [int]$parentObjectTypeId,
+        $parentObjectTypeId,
 
         [ValidateNotNullOrEmpty()]
         [Parameter(Mandatory = $true)]
-        [int]$objectSchemaId,
+        $objectSchemaId,
 
         [ValidateNotNullOrEmpty()]
         [Alias('ApiKey')]
@@ -95,7 +95,7 @@ New-InsightObjectTypes -Name "My Object Type" -Description "A Sample Object Type
             $RequestBody.Add('description', $Description)
         }
         If ($parentObjectTypeId) {
-            $RequestBody.Add('description', $parentObjectTypeId)
+            $RequestBody.Add('parentObjectTypeId', $parentObjectTypeId)
         }
         
         $RequestBody = ConvertTo-Json $RequestBody -Depth 1
