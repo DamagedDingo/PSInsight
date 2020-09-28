@@ -9,4 +9,17 @@ foreach ($ps1 in @($Public + $Private)) {
     }
 }
 
+# Load up dependency modules
+foreach($ps1 in $Private)
+{
+    Try
+    {
+        Import-Module $ps1 -ErrorAction Stop
+    }
+    Catch
+    {
+        Write-Error "Failed to import module $ps1`: $_"
+    }
+}
+
 Export-ModuleMember -Function $Public.Basename
