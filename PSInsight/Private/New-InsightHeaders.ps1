@@ -1,18 +1,17 @@
-
-
 function New-InsightHeaders {
-    <#
+<#
 
 .SYNOPSIS
 Generate Insight headers.
 .EXAMPLE
-$Headers = New-InsightHeaders -ApiKey $InsightApiKey
+$Headers = New-InsightHeaders -InsightApiKey $InsightApiKey
 .OUTPUTS
 Generic dictionary.
 
 #>
     param (
         [Parameter(Mandatory = $true)]
+        [Alias('ApiKey')]
         [string]$InsightApiKey
     )
 
