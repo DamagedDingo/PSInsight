@@ -1,5 +1,5 @@
-function Get-InsightObjectTypes {
-    <#
+function Get-InsightStatuses {
+<#
 
 .SYNOPSIS
 Resource to load a status in Insight.
