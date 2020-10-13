@@ -1,5 +1,5 @@
 function Get-InsightObjectTypes {
-    <#
+<#
 
 .SYNOPSIS
 Resource to find object types in Insight for a specific object schema. The object types are responded in a flat list.
@@ -8,7 +8,8 @@ Resource to find object types in Insight for a specific object schema. The objec
 Resource to find object types in Insight for a specific object schema. The object types are responded in a flat list.
 
 .PARAMETER ID
-The object type ID.
+The object type ID. 
+Can be the Object ID or the Schema ID etc
 
 .PARAMETER InsightApiKey
 The Api key.

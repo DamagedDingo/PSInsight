@@ -53,14 +53,17 @@ Get-InsightObjectSchema -InsightApiKey $InsightApiKey
         }        
 
         If (!($response.objectschemas)) {
-            Write-Verbose "No object schemas found"
+            # Throw error so that catch block in script is triggered
+            throw "API call successful but no object schemas found on server"
         }
         Else {
             If($response.objectschemas){
-            $response.objectschemas
+                #Returns multiple schemas
+                $response.objectschemas
             }
             else{
-            $response
+                #Returns single schema
+                $response
             }
         }
     }
