@@ -210,7 +210,7 @@ task CreateRootModule {
     foreach ($FunctionType in "Private","Public") {
         '#region {0} functions' -f $FunctionType | Add-Content -Path $RootModule
 
-        $Files = @(Get-ChildItem $BuildRoot\$Script:ModuleName\$FunctionType -Filter *.ps1)
+        $Files = @(Get-ChildItem $BuildRoot\$Script:ModuleName\$FunctionType -Recurse -Filter *.ps1)
 
         foreach ($File in $Files) {
             Get-Content -Path $File.FullName | Add-Content -Path $RootModule
