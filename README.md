@@ -93,5 +93,5 @@ New-InsightHeaders
 Test-Module
 ```
 
-[Schema](https://i.imgur.com/NByWKhl.png)
-[Attributes](https://i.imgur.com/GzvExXL.png)
+![Schema](https://i.imgur.com/NByWKhl.png)
+![Attributes](https://i.imgur.com/GzvExXL.png)
