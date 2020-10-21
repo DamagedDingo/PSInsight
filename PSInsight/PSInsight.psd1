@@ -12,7 +12,7 @@
 RootModule = 'PSInsight.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.1.20201021.0'
+ModuleVersion = '1.2.20201021.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -69,7 +69,18 @@ Description = 'A collection of Powershell tools to interface with the Jira Insig
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'New-InsightHeaders'
+FunctionsToExport = 'Get-InsightObjectTypes', 'New-InsightObjectTypes', 
+               'Remove-InsightObjectTypes', 'Set-InsightObjectTypes', 
+               'Get-InsightObjectSchema', 'New-InsightObjectSchema', 
+               'Remove-InsightObjectSchema', 'Set-InsightObjectSchema', 
+               'Get-InsightStatuses', 'New-InsightStatuses', 
+               'Remove-InsightObjectTypes', 'Set-InsightStatuses', 
+               'Get-InsightObject', 'New-InsightObject', 
+               'New-InsightObjectAttribute', 'Remove-InsightObject', 
+               'Set-InsightObject', 'Get-InsightObjectTypeAttributes', 
+               'New-InsightObjectTypeAttributes', 
+               'Remove-InsightObjectTypeAttributes', 
+               'Set-InsightObjectTypeAttributes', 'Get-InsightIcons'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = '*'
@@ -108,7 +119,7 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = 'Added
-- First Deployment'
+- Added Recurse to the Invoke-Build Script'
 
         # Prerelease string of this module
         # Prerelease = ''
