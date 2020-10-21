@@ -3,6 +3,19 @@
 #Turn on script wide verbose for testing
 $VerbosePreference = "continue"
 
+#region Variables
+$Global:InsightApiKey = "Place-Your-API-Key-Here"
+$ObjectSchemaName = "My PSInsight Example"
+$ObjectSchemaKey = "MPE"
+$ObjectSchemaDescription = "Example CMDB Schema built with PSInsight"
+$ObjectTypeName = "ZoomRooms"
+$ObjectTypeDescription = "ZoomRooms"
+$ObjectTypeIcon = "AV Receiver"
+
+#Path to CSV containing the list of attributes
+$RequiredZoomRoomAttributes = Import-Csv ".\Examples\Attributes_ZoomRoom.csv"
+#endregion Variables
+
 #region Required-Modules
 function Test-Module ($m) {
 
@@ -35,20 +48,6 @@ function Test-Module ($m) {
 
 Test-Module PSInsight
 #endregion Required-Modules
-
-#region Variables
-$Global:InsightApiKey = "Place-Your-API-Key-Here"
-$ObjectSchemaName = "My PSInsight Example"
-$ObjectSchemaKey = "MPE"
-$ObjectSchemaDescription = "Example CMDB Schema built with PSInsight"
-$ObjectTypeName = "ZoomRooms"
-$ObjectTypeDescription = "ZoomRooms"
-$ObjectTypeIcon = "AV Receiver"
-
-#Path to CSV containing the list of attributes
-$RequiredZoomRoomAttributes = Import-Csv ".\PSInsight\Assets\Attributes_ZoomRoom.csv"
-
-#endregion Variables
 
 # Schema setup
 try {
