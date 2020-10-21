@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 
 ## [Unreleased]
+- Added Recurse to the Invoke-Build Script for the PSM1
 
 ## [1.2.20201021.0] - 2020-10-21
 ### Added
