@@ -178,7 +178,7 @@ task UpdateChangeLog -If ($NewRelease.IsPresent) {
     Update-Changelog -Path $BuildRoot\build\$Script:ModuleName\CHANGELOG.md -ReleaseVersion $Script:VersionToBuild -LinkMode Automatic -LinkPattern $LinkPattern
 }
 
-# Synopsis: Gather all exported functions to populate manifest with
+# Synopsis: Gather all exported functions to populate manifest with *Added Recurse
 task GetFunctionsToExport {
     $Files = @(Get-ChildItem $BuildRoot\$Script:ModuleName\Public -Recurse -Filter *.ps1)
 
