@@ -25,7 +25,7 @@ Import-Module PSInsight
 ```
 
 # Using your API Key #
-Almost all commands require an API key. 
+Almost all commands require an API key.
   
 For ease of use, each command looks for the variable automatically in the following order:  
     In the global scope for InsightApiKey  
@@ -42,7 +42,7 @@ New-InsightObjectSchema -Name "MyObjSch" -ObjectSchemaKey "MOS" -Description "Ne
 A complete example script has been placed inside the Examples folder.
 The script will build the Insight Schema and Object types for Zoom rooms,
 attributes will be added from the 'Attributes_ZoomRoom.csv' to save time
-and allow for customisation. 
+and allow for customisation.
 
 # Available Functions #
 Use get-help for more information about each function.
@@ -90,4 +90,8 @@ Set-InsightStatuses
 ## Private ##
 ```
 New-InsightHeaders
+Test-Module
 ```
+
+[Schema](https://i.imgur.com/NByWKhl.png)
+[Attributes](https://i.imgur.com/GzvExXL.png)
