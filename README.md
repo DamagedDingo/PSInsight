@@ -13,7 +13,7 @@ Import-Module PSInsight
 ## Using Git ##
 Clone the repository.
 ```
-git clone "https://github.com/AllElbows/PSInsight.git"
+git clone "https://github.com/DamagedDingo/PSInsight.git"
 ```
 Place directory into a module directory (e.g. $env:USERPROFILE\Documents\WindowsPowerShell\Modules).
 ```
@@ -39,6 +39,10 @@ import-module PSInsight
 $Global:InsightApiKey    = 'API_Key_Goes_Here'  
 New-InsightObjectSchema -Name "MyObjSch" -ObjectSchemaKey "MOS" -Description "New Obj Sch"
 ```
+A complete example script has been placed inside the Examples folder.
+The script will build the Insight Schema and Object types for Zoom rooms,
+attributes will be added from the 'Attributes_ZoomRoom.csv' to save time
+and allow for customisation. 
 
 # Available Functions #
 Use get-help for more information about each function.
