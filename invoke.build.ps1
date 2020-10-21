@@ -180,7 +180,7 @@ task UpdateChangeLog -If ($NewRelease.IsPresent) {
 
 # Synopsis: Gather all exported functions to populate manifest with
 task GetFunctionsToExport {
-    $Files = @(Get-ChildItem $BuildRoot\$Script:ModuleName\Public -Filter *.ps1)
+    $Files = @(Get-ChildItem $BuildRoot\$Script:ModuleName\Public -Recurse -Filter *.ps1)
 
     $Script:FunctionsToExport = foreach ($File in $Files) {
         try {
