@@ -12,7 +12,7 @@
 RootModule = 'PSInsight.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.2.20201021.0'
+ModuleVersion = '1.3.20201021.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -119,7 +119,7 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = 'Added
-- Added Recurse to the Invoke-Build Script'
+- Added Recurse to the Invoke-Build Script for the PSM1'
 
         # Prerelease string of this module
         # Prerelease = ''
