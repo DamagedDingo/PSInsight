@@ -44,6 +44,9 @@ The script will build the Insight Schema and Object types for Zoom rooms,
 attributes will be added from the 'Attributes_ZoomRoom.csv' to save time
 and allow for customisation.
 
+![Schema](https://i.imgur.com/NByWKhl.png) <!-- .element height="50%" width="50%" -->
+![Attributes](https://i.imgur.com/GzvExXL.png) <!-- .element height="50%" width="50%" -->
+
 # Available Functions #
 Use get-help for more information about each function.
 
@@ -93,5 +96,3 @@ New-InsightHeaders
 Test-Module
 ```
 
-![Schema](https://i.imgur.com/NByWKhl.png)
-![Attributes](https://i.imgur.com/GzvExXL.png)
