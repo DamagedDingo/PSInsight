@@ -10,7 +10,6 @@ Generic dictionary.
 
 #>
     param (
-        [Parameter(Mandatory = $true)]
         [Alias('ApiKey')]
         [string]$InsightApiKey
     )

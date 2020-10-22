@@ -1,7 +1,14 @@
 # PSInsight
 - - - - 
-PSInsight is a Powershell wrapper to interface with Jira's Insight API..
+PSInsight is a Powershell wrapper to interface with Jira Insight's [API](https://documentation.mindville.com/display/INSCLOUD/REST+API).
 
+PSInsight can be used to build or modify the [Jira Insight](https://marketplace.atlassian.com/apps/1212137/insight-asset-management?hosting=cloud&tab=overview) schema or to add or modify assets within the asset management database.
+
+Links to Insight API information for each function can be found under links via Get-Help
+
+```
+Get-Help Get-InsightObjectSchema
+```
 
 # Getting Started #
 ## Using PowershellGallery ##
@@ -95,4 +102,3 @@ Set-InsightStatuses
 New-InsightHeaders
 Test-Module
 ```
-

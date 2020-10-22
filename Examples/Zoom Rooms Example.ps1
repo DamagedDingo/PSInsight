@@ -10,10 +10,10 @@ $ObjectSchemaKey = "MPE"
 $ObjectSchemaDescription = "Example CMDB Schema built with PSInsight"
 $ObjectTypeName = "ZoomRooms"
 $ObjectTypeDescription = "ZoomRooms"
-$ObjectTypeIcon = "AV Receiver"
+$ObjectTypeIcon = "AV Receiver" # Avalible icons can be found here 'Get-InsightIcons -InsightApiKey $InsightApiKey'
 
 #Path to CSV containing the list of attributes
-$RequiredZoomRoomAttributes = Import-Csv ".\Examples\Attributes_ZoomRoom.csv"
+$RequiredZoomRoomAttributes = Import-Csv ".\Attributes_ZoomRoom.csv"
 #endregion Variables
 
 #region Required-Modules
@@ -61,7 +61,7 @@ catch {
 
 # Create Zoom Room Object Type
 try {
-    $ZoomRoomObjectType = Get-InsightObjectTypes -objectschemaID $InsightObjectSchema.id -InsightApiKey $InsightApiKey | Where { $_.Name -like $ObjectTypename }
+    $ZoomRoomObjectType = Get-InsightObjectTypes -ID $InsightObjectSchema.id -InsightApiKey $InsightApiKey | Where { $_.Name -like $ObjectTypename }
     if (!($ZoomRoomObjectType)) {
         throw "$ObjectTypename - Object not found"
         Write-Verbose 'Object Type not found'
