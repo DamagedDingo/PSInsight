@@ -55,7 +55,7 @@ Set-InsightStatuses -ID 8 -Name "My New Status" -Description "Sample Status - Up
 
         [ValidateNotNullOrEmpty()]
         [Alias('ApiKey')]
-        [string]$InsightApiKey
+        [string]$InsightApiKey = $InsightApiKey
     )
     
     begin {

@@ -72,7 +72,7 @@ Get-InsightObjectTypeAttributes -ID 2 -InsightApiKey $InsightApiKey
 
         [ValidateNotNullOrEmpty()]
         [Alias('ApiKey')]
-        [string]$InsightApiKey
+        [string]$InsightApiKey = $InsightApiKey
     )
     
     begin {

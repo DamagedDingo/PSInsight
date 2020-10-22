@@ -69,7 +69,7 @@ Set-InsightObjectTypes -ID 1 -Name "My Object Type" -Description "A Sample Objec
 
         [ValidateNotNullOrEmpty()]
         [Alias('ApiKey')]
-        [string]$InsightApiKey
+        [string]$InsightApiKey = $InsightApiKey
     )
     
     begin {

@@ -109,7 +109,7 @@ Set-InsightObjectTypeAttributes -ParentObjectTypeId 2 -objectTypeAttributeId 30 
 
         [ValidateNotNullOrEmpty()]
         [Alias('ApiKey')]
-        [string]$InsightApiKey = $Global:InsightAPIKey
+        [string]$InsightApiKey = $InsightApiKey
     )
     DynamicParam {
         # Create a new dictionary to contain all the dynamic parameters

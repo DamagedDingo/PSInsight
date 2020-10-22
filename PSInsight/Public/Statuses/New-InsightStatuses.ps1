@@ -48,7 +48,7 @@ New-InsightStatuses -Name "My New Status" -Description "Sample Status" -category
 
         [ValidateNotNullOrEmpty()]
         [Alias('ApiKey')]
-        [string]$InsightApiKey
+        [string]$InsightApiKey = $InsightApiKey
     )
     
     begin {

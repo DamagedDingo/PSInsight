@@ -50,7 +50,7 @@ Set-InsightObjectSchema -ID 3 -Name "MyObjectSchema" -ObjectSchemaKey "MOS" -Des
 
         [ValidateNotNullOrEmpty()]
         [Alias('ApiKey')]
-        [string]$InsightApiKey
+        [string]$InsightApiKey = $InsightApiKey
     )
     
     begin {

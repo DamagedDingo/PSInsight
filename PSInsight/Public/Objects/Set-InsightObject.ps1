@@ -36,7 +36,7 @@ https://documentation.mindville.com/display/INSCLOUD/REST+API+-+Object+schema
 
         [ValidateNotNullOrEmpty()]
         [Alias('ApiKey')]
-        [string]$InsightApiKey
+        [string]$InsightApiKey = $InsightApiKey
     )
     
     begin {

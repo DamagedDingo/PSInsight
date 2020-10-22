@@ -106,7 +106,7 @@ New-InsightObjectTypeAttributes -Name "Link to Parent" -Type Object -typeValue 2
 
         [ValidateNotNullOrEmpty()]
         [Alias('ApiKey')]
-        [string]$InsightApiKey
+        [string]$InsightApiKey = $InsightApiKey
     )
     DynamicParam {
         # Create a new dictionary to contain all the dynamic parameters

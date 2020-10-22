@@ -46,7 +46,7 @@ Get-InsightObject -ID "ABC-3" -InsightApiKey $InsightApiKey
 
         [ValidateNotNullOrEmpty()]
         [Alias('ApiKey')]
-        [string]$InsightApiKey
+        [string]$InsightApiKey = $InsightApiKey
     )
     
     begin {

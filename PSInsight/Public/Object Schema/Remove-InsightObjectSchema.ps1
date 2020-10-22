@@ -39,7 +39,7 @@ Remove-InsightObjectSchema -ID 1 -InsightApiKey $InsightApiKey
 
         [ValidateNotNullOrEmpty()]
         [Alias('ApiKey')]
-        [string]$InsightApiKey
+        [string]$InsightApiKey = $InsightApiKey
     )
     
     begin {

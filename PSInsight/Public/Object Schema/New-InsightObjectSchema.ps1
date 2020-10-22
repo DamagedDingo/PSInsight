@@ -52,7 +52,7 @@ New-InsightObjectSchema -Name "MyObjectSchema" -ObjectSchemaKey "NAS" -Descripti
 
         [ValidateNotNullOrEmpty()]
         [Alias('ApiKey')]
-        [string]$InsightApiKey
+        [string]$InsightApiKey = $InsightApiKey
     )
     
     begin {

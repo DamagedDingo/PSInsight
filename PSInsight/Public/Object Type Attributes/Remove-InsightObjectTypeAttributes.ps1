@@ -31,7 +31,7 @@ Remove-InsightObjectTypeAttributes -ID 11 -InsightApiKey $InsightApiKey
 
         [ValidateNotNullOrEmpty()]
         [Alias('ApiKey')]
-        [string]$InsightApiKey
+        [string]$InsightApiKey = $InsightApiKey
     )
     
     begin {

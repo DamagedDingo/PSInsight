@@ -56,7 +56,7 @@ New-InsightObject -objectTypeId 2 -attributes $array -InsightApiKey $InsightApiK
 
         [ValidateNotNullOrEmpty()]
         [Alias('ApiKey')]
-        [string]$InsightApiKey
+        [string]$InsightApiKey = $InsightApiKey
     )
     
     begin {

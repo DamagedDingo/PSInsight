@@ -40,7 +40,7 @@ Get-InsightIcons -InsightApiKey $InsightApiKey
     param (
         [ValidateNotNullOrEmpty()]
         [Alias('ApiKey')]
-        [string]$InsightApiKey,
+        [string]$InsightApiKey = $InsightApiKey,
 
         [switch]$Full = $False
     )
