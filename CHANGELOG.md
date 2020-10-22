@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 
 ## [Unreleased]
+- Fixed issue with APIkey
 
 ## [1.3.20201021.0] - 2020-10-21
 ### Added
