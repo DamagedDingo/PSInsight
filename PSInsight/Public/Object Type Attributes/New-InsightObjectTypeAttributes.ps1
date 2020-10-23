@@ -110,297 +110,156 @@ New-InsightObjectTypeAttributes -Name "Link to Parent" -Type Object -typeValue 2
     )
     DynamicParam {
         # Create a new dictionary to contain all the dynamic parameters
-        $paramDictionary = new-object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
+        $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
 
         if ($Type -like "Default") {
-            #region DefaultType
-            #Create the base DynamicParam attributes
-            $attributes = new-object System.Management.Automation.ParameterAttribute
-            $attributes.ParameterSetName = "__AllParameterSets"
-            $attributes.Mandatory = $true
-
-            # Create the ValidateSet list
-            $attributesValidate = New-Object System.Management.Automation.ValidateSetAttribute @("Text", "Integer", "Boolean", "Double", "Date", "Time", "Date_Time", "URL", "Email", "TextArea", "Select", "IP_Address")
-        
-            # Add the Base Attributes and the Validated list attributes to a collection
-            $attributeCollection = new-object -Type System.Collections.ObjectModel.Collection[System.Attribute]
-            $attributeCollection.Add($attributes)
-            $attributeCollection.Add($attributesValidate)
-
-            #Create a new object with the Name, Type, and attributes collection.
-            $DefaultType_dynParam = new-object -Type System.Management.Automation.RuntimeDefinedParameter("DefaultType", [STRING], $attributeCollection)
-
-            # Add Parameter to the Dictionary collection 
-            $paramDictionary.Add("DefaultType", $DefaultType_dynParam)
-            #endregion DefaultType
+            $parameter = [System.Management.Automation.RuntimeDefinedParameter]::new(
+                        'DefaultType',
+                        [string],
+                        [Attribute[]]@(
+                            [Parameter]@{ Mandatory = $true; Position = 1 }
+                            [ValidateSet]::new("Text", "Integer", "Boolean", "Double", "Date", "Time", "Date_Time", "URL", "Email", "TextArea", "Select", "IP_Address")
+                        )
+                    )
+                    $paramDictionary.Add($parameter.Name, $parameter)
         }
 
-        if ($DefaultType -like "Integer" -or $DefaultType -like "Float") {
-            #region suffix
-            #Create the base DynamicParam attributes
-            $attributes = new-object System.Management.Automation.ParameterAttribute
-            $attributes.ParameterSetName = "__AllParameterSets"
-            $attributes.Mandatory = $true
+        if ($DefaultType -in "Integer","Float") {
+            $parameter = [System.Management.Automation.RuntimeDefinedParameter]::new(
+                        'suffix',
+                        [string],
+                        [Attribute[]]@(
+                            [Parameter]@{ Mandatory = $true; Position = 1 }
+                            #[ValidateSet]::new("Start", "Stop", "Create", "Delete")
+                        )
+                    )
+                    $paramDictionary.Add($parameter.Name, $parameter)
 
-            # Create the ValidateSet list
-            #$attributesValidate = New-Object System.Management.Automation.ValidateSetAttribute @("Text", "Integer", "Boolean", "Double", "Date", "Time", "Date Time", "URL", "Email", "Text Area", "Select", "IP Address")
-        
-            # Add the Base Attributes and the Validated list attributes to a collection
-            $suffix_attributeCollection = new-object -Type System.Collections.ObjectModel.Collection[System.Attribute]
-            $suffix_attributeCollection.Add($attributes)
-            #$attributeCollection.Add($attributesValidate)
-
-            #Create a new object with the Name, Type, and attributes collection.
-            $suffix_dynParam = new-object -Type System.Management.Automation.RuntimeDefinedParameter("suffix", [STRING], $suffix_attributeCollection)
-
-            # Add Parameter to the Dictionary collection 
-            $paramDictionary.Add("suffix", $suffix_dynParam)
-            #endregion suffix
-
-            #region summable
-            #Create the base DynamicParam attributes
-            $attributes = new-object System.Management.Automation.ParameterAttribute
-            $attributes.ParameterSetName = "__AllParameterSets"
-            $attributes.Mandatory = $true
-
-            # Create the ValidateSet list
-            $attributesValidate = New-Object System.Management.Automation.ValidateSetAttribute @("True", "False")
-        
-            # Add the Base Attributes and the Validated list attributes to a collection
-            $attributeCollection = new-object -Type System.Collections.ObjectModel.Collection[System.Attribute]
-            $attributeCollection.Add($attributes)
-            $attributeCollection.Add($attributesValidate)
-
-            #Create a new object with the Name, Type, and attributes collection.
-            $summable_dynParam = new-object -Type System.Management.Automation.RuntimeDefinedParameter("summable", [STRING], $attributeCollection)
-
-            # Add Parameter to the Dictionary collection 
-            $paramDictionary.Add("summable", $summable_dynParam)
-            #endregion summable
+            $parameter = [System.Management.Automation.RuntimeDefinedParameter]::new(
+                        'summable',
+                        [string],
+                        [Attribute[]]@(
+                            [Parameter]@{ Mandatory = $true; Position = 1 }
+                            [ValidateSet]::new("True", "False")
+                        )
+                    )
+                    $paramDictionary.Add($parameter.Name, $parameter)
         }
 
-        if ($Type -like "Object") {
-            #region typeValue
-            #Create the base DynamicParam attributes
-            $attributes = new-object System.Management.Automation.ParameterAttribute
-            $attributes.ParameterSetName = "__AllParameterSets"
-            $attributes.Mandatory = $true
+        if ($Type -in "Object") {
 
-            # Create the ValidateSet list
-            #$attributesValidate = New-Object System.Management.Automation.ValidateSetAttribute @("Text", "Integer", "Boolean", "Double", "Date", "Time", "Date Time", "URL", "Email", "Text Area", "Select", "IP Address")
-        
-            # Add the Base Attributes and the Validated list attributes to a collection
-            $attributeCollection = new-object -Type System.Collections.ObjectModel.Collection[System.Attribute]
-            $attributeCollection.Add($attributes)
-            #$attributeCollection.Add($attributesValidate)
+            $parameter = [System.Management.Automation.RuntimeDefinedParameter]::new(
+                        'typeValue',
+                        [string],
+                        [Attribute[]]@(
+                            [Parameter]@{ Mandatory = $true; Position = 1 }
+                        )
+                    )
+                    $paramDictionary.Add($parameter.Name, $parameter)
 
-            #Create a new object with the Name, Type, and attributes collection.
-            $typeValue_dynParam = new-object -Type System.Management.Automation.RuntimeDefinedParameter("typeValue", [STRING], $attributeCollection)
+            $parameter = [System.Management.Automation.RuntimeDefinedParameter]::new(
+                        'includeChildObjectTypes',
+                        [string],
+                        [Attribute[]]@(
+                            [Parameter]@{ Mandatory = $false; Position = 1 }
+                            #[ValidateSet]::new("Start", "Stop", "Create", "Delete")
+                        )
+                    )
+                    $paramDictionary.Add($parameter.Name, $parameter)
 
-            # Add Parameter to the Dictionary collection 
-            $paramDictionary.Add("typeValue", $typeValue_dynParam)
-            #endregion typeValue
-
-            #region includeChildObjectTypes
-            #Create the base DynamicParam attributes
-            $attributes = new-object System.Management.Automation.ParameterAttribute
-            $attributes.ParameterSetName = "__AllParameterSets"
-            $attributes.Mandatory = $false
-
-            # Create the ValidateSet list
-            #$attributesValidate = New-Object System.Management.Automation.ValidateSetAttribute @("Text", "Integer", "Boolean", "Double", "Date", "Time", "Date Time", "URL", "Email", "Text Area", "Select", "IP Address")
-
-            # Add the Base Attributes and the Validated list attributes to a collection
-            $attributeCollection = new-object -Type System.Collections.ObjectModel.Collection[System.Attribute]
-            $attributeCollection.Add($attributes)
-            #$attributeCollection.Add($attributesValidate)
-
-            #Create a new object with the Name, Type, and attributes collection.
-            $includeChildObjectTypes_dynParam = new-object -Type System.Management.Automation.RuntimeDefinedParameter("includeChildObjectTypes", [STRING], $attributeCollection)
-
-            # Add Parameter to the Dictionary collection 
-            $paramDictionary.Add("includeChildObjectTypes", $includeChildObjectTypes_dynParam)
-            #endregion includeChildObjectTypes
-
-            #region iql
-            #Create the base DynamicParam attributes
-            $attributes = new-object System.Management.Automation.ParameterAttribute
-            $attributes.ParameterSetName = "__AllParameterSets"
-            $attributes.Mandatory = $false
-
-            # Create the ValidateSet list
-            #$attributesValidate = New-Object System.Management.Automation.ValidateSetAttribute @("Text", "Integer", "Boolean", "Double", "Date", "Time", "Date Time", "URL", "Email", "Text Area", "Select", "IP Address")
-
-            # Add the Base Attributes and the Validated list attributes to a collection
-            $attributeCollection = new-object -Type System.Collections.ObjectModel.Collection[System.Attribute]
-            $attributeCollection.Add($attributes)
-            #$attributeCollection.Add($attributesValidate)
-
-            #Create a new object with the Name, Type, and attributes collection.
-            $iql_dynParam = new-object -Type System.Management.Automation.RuntimeDefinedParameter("iql", [STRING], $attributeCollection)
-
-            # Add Parameter to the Dictionary collection 
-            $paramDictionary.Add("iql", $iql_dynParam)
-            #endregion iql
+            $parameter = [System.Management.Automation.RuntimeDefinedParameter]::new(
+                        'iql',
+                        [string],
+                        [Attribute[]]@(
+                            [Parameter]@{ Mandatory = $false; Position = 1 }
+                            #[ValidateSet]::new("Start", "Stop", "Create", "Delete")
+                        )
+                    )
+                    $paramDictionary.Add($parameter.Name, $parameter)
         }
 
-        if ($Type -like "User") {
-            #region typeValueMulti
-            #The JIRA groups to restrict selection
-            #Create the base DynamicParam attributes
-            $attributes = new-object System.Management.Automation.ParameterAttribute
-            $attributes.ParameterSetName = "__AllParameterSets"
-            $attributes.Mandatory = $false
-
-            # Create the ValidateSet list
-            #$attributesValidate = New-Object System.Management.Automation.ValidateSetAttribute @("Text", "Integer", "Boolean", "Double", "Date", "Time", "Date Time", "URL", "Email", "Text Area", "Select", "IP Address")
-        
-            # Add the Base Attributes and the Validated list attributes to a collection
-            $attributeCollection = new-object -Type System.Collections.ObjectModel.Collection[System.Attribute]
-            $attributeCollection.Add($attributes)
-            #$attributeCollection.Add($attributesValidate)
-
-            #Create a new object with the Name, Type, and attributes collection.
-            $typeValueMulti_dynParam = new-object -Type System.Management.Automation.RuntimeDefinedParameter("typeValueMulti", [ARRAY], $attributeCollection)
-
-            # Add Parameter to the Dictionary collection 
-            $paramDictionary.Add("typeValueMulti", $typeValueMulti_dynParam)
-            #endregion typeValueMulti
+        if ($Type -in "User") {
+            $parameter = [System.Management.Automation.RuntimeDefinedParameter]::new(
+                        'typeValueMulti',
+                        [array],
+                        [Attribute[]]@(
+                            [Parameter]@{ Mandatory = $false; Position = 1 }
+                        )
+                    )
+                    $paramDictionary.Add($parameter.Name, $parameter)
         }
 
-        if ($Type -like "Object" -or $Type -like "URL" -or $Type -like "Confluence") {
-            #region additionalValue
-            #Create the base DynamicParam attributes
-            $attributes = new-object System.Management.Automation.ParameterAttribute
-            $attributes.ParameterSetName = "__AllParameterSets"
+        if ($Type -in "Object","URL","Confluence","User") {
 
             if ($Type -like "Object") {
-                $attributes.Mandatory = $true
+                $Mandatory = $attributes.Mandatory = $true
             }
             else {
-                $attributes.Mandatory = $false
+                $Mandatory = $attributes.Mandatory = $false
             }
-            
-            # Create the ValidateSet list
+
             if ($Type -like "URL") {
-                $attributesValidate = New-Object System.Management.Automation.ValidateSetAttribute @("DISABLED", "ENABLED")
+                $ValidatedSet = "DISABLED","ENABLED"
             }
             if ($Type -like "User") {
-                $attributesValidate = New-Object System.Management.Automation.ValidateSetAttribute @("SHOW_PROFILE", "HIDE_PROFILE")
+                $ValidatedSet = "SHOW_PROFILE","HIDE_PROFILE"
             }
-            #$attributesValidate = New-Object System.Management.Automation.ValidateSetAttribute @("Text", "Integer", "Boolean", "Double", "Date", "Time", "Date Time", "URL", "Email", "Text Area", "Select", "IP Address")
-        
-            # Add the Base Attributes and the Validated list attributes to a collection
-            $attributeCollection = new-object -Type System.Collections.ObjectModel.Collection[System.Attribute]
-            $attributeCollection.Add($attributes)
-            #$attributeCollection.Add($attributesValidate)
 
-            #Create a new object with the Name, Type, and attributes collection.
-            $additionalValue_dynParam = new-object -Type System.Management.Automation.RuntimeDefinedParameter("additionalValue", [STRING], $attributeCollection)
-
-            # Add Parameter to the Dictionary collection 
-            $paramDictionary.Add("additionalValue", $additionalValue_dynParam)
-            #endregion additionalValue
+            $parameter = [System.Management.Automation.RuntimeDefinedParameter]::new(
+                        'additionalValue',
+                        [string],
+                        [Attribute[]]@(
+                            [Parameter]@{ Mandatory = $Mandatory; Position = 1 }
+                            [ValidateSet]::new($ValidatedSet)
+                        )
+                    )
+                    $paramDictionary.Add($parameter.Name, $parameter)
         }
 
-        if ($Type -like "Email" -or $Type -like "Select" -or $Type -like "Object" -or $Type -like "User" -or $Type -like "Group" -or $Type -like "Version" -or $Type -like "Project") {
-            #region minimumCardinality
-            #The JIRA groups to restrict selection
-            #Create the base DynamicParam attributes
-            $attributes = new-object System.Management.Automation.ParameterAttribute
-            $attributes.ParameterSetName = "__AllParameterSets"
+        if ($Type -in "Email","Select","Object","User","Group","Version","Project") {
+            $parameter = [System.Management.Automation.RuntimeDefinedParameter]::new(
+                        'minimumCardinality',
+                        [int],
+                        [Attribute[]]@(
+                            [Parameter]@{ Mandatory = $false; Position = 1 }
+                        )
+                    )
+                    $paramDictionary.Add($parameter.Name, $parameter)
 
-            $attributes.Mandatory = $false
-            
-            # Create the ValidateSet list
-            #$attributesValidate = New-Object System.Management.Automation.ValidateSetAttribute @("Text", "Integer", "Boolean", "Double", "Date", "Time", "Date Time", "URL", "Email", "Text Area", "Select", "IP Address")
-        
-            # Add the Base Attributes and the Validated list attributes to a collection
-            $attributeCollection = new-object -Type System.Collections.ObjectModel.Collection[System.Attribute]
-            $attributeCollection.Add($attributes)
-            #$attributeCollection.Add($attributesValidate)
-
-            #Create a new object with the Name, Type, and attributes collection.
-            $minimumCardinality_dynParam = new-object -Type System.Management.Automation.RuntimeDefinedParameter("minimumCardinality", [INT], $attributeCollection)
-            $PSBoundParameters["minimumCardinality_dynParam"] = 0
-
-            # Add Parameter to the Dictionary collection 
-            $paramDictionary.Add("minimumCardinality", $minimumCardinality_dynParam)
-            #endregion minimumCardinality
-
-            #region maximumCardinality
-            #The JIRA groups to restrict selection
-            #Create the base DynamicParam attributes
-            $attributes = new-object System.Management.Automation.ParameterAttribute
-            $attributes.ParameterSetName = "__AllParameterSets"
-
-            $attributes.Mandatory = $false
-            
-            # Create the ValidateSet list
-            #$attributesValidate = New-Object System.Management.Automation.ValidateSetAttribute @("Text", "Integer", "Boolean", "Double", "Date", "Time", "Date Time", "URL", "Email", "Text Area", "Select", "IP Address")
-        
-            # Add the Base Attributes and the Validated list attributes to a collection
-            $attributeCollection = new-object -Type System.Collections.ObjectModel.Collection[System.Attribute]
-            $attributeCollection.Add($attributes)
-            #$attributeCollection.Add($attributesValidate)
-
-            #Create a new object with the Name, Type, and attributes collection.
-            $maximumCardinality_dynParam = new-object -Type System.Management.Automation.RuntimeDefinedParameter("maximumCardinality", [INT], $attributeCollection)
-            $PSBoundParameters["maximumCardinality_dynParam"] = 1
-
-            # Add Parameter to the Dictionary collection 
-            $paramDictionary.Add("maximumCardinality", $maximumCardinality_dynParam)
-            #endregion maximumCardinality
+            $parameter = [System.Management.Automation.RuntimeDefinedParameter]::new(
+                        'maximumCardinality',
+                        [int],
+                        [Attribute[]]@(
+                            [Parameter]@{ Mandatory = $false; Position = 1 }
+                        )
+                    )
+                    $paramDictionary.Add($parameter.Name, $parameter)
         }
 
-        if ($Type -like "Text" -or $Type -like "Email") {
-            #region regexValidation
-            #Create the base DynamicParam attributes
-            $attributes = new-object System.Management.Automation.ParameterAttribute
-            $attributes.ParameterSetName = "__AllParameterSets"
-            $attributes.Mandatory = $false
-
-            # Create the ValidateSet list
-            #$attributesValidate = New-Object System.Management.Automation.ValidateSetAttribute @("Text", "Integer", "Boolean", "Double", "Date", "Time", "Date Time", "URL", "Email", "Text Area", "Select", "IP Address")
-
-            # Add the Base Attributes and the Validated list attributes to a collection
-            $attributeCollection = new-object -Type System.Collections.ObjectModel.Collection[System.Attribute]
-            $attributeCollection.Add($attributes)
-            #$attributeCollection.Add($attributesValidate)
-
-            #Create a new object with the Name, Type, and attributes collection.
-            $regexValidation_dynParam = new-object -Type System.Management.Automation.RuntimeDefinedParameter("regexValidation", [STRING], $attributeCollection)
-
-            # Add Parameter to the Dictionary collection 
-            $paramDictionary.Add("regexValidation", $regexValidation_dynParam)
-            #endregion regexValidation
+        if ($Type -in "Text","Email") {
+            $parameter = [System.Management.Automation.RuntimeDefinedParameter]::new(
+                        'regexValidation',
+                        [string],
+                        [Attribute[]]@(
+                            [Parameter]@{ Mandatory = $false; Position = 1 }
+                        )
+                    )
+                    $paramDictionary.Add($parameter.Name, $parameter)
         }
 
         if ($Type -like "Options") {
-            #region options
-            #Create the base DynamicParam attributes
-            #The options for the attribute in comma separate list - Might need to add script validation or use .join(",")
-            $attributes = new-object System.Management.Automation.ParameterAttribute
-            $attributes.ParameterSetName = "__AllParameterSets"
-            $attributes.Mandatory = $false
-
-            # Create the ValidateSet list
-            #$attributesValidate = New-Object System.Management.Automation.ValidateSetAttribute @("Text", "Integer", "Boolean", "Double", "Date", "Time", "Date Time", "URL", "Email", "Text Area", "Select", "IP Address")
-
-            # Add the Base Attributes and the Validated list attributes to a collection
-            $attributeCollection = new-object -Type System.Collections.ObjectModel.Collection[System.Attribute]
-            $attributeCollection.Add($attributes)
-            #$attributeCollection.Add($attributesValidate)
-
-            #Create a new object with the Name, Type, and attributes collection.
-            $options_dynParam = new-object -Type System.Management.Automation.RuntimeDefinedParameter("options", [ARRAY], $attributeCollection)
-
-            # Add Parameter to the Dictionary collection 
-            $paramDictionary.Add("options", $options_dynParam)
-            #endregion options
+            $parameter = [System.Management.Automation.RuntimeDefinedParameter]::new(
+                        'options',
+                        [array],
+                        [Attribute[]]@(
+                            [Parameter]@{ Mandatory = $false; Position = 1 }
+                            #[ValidateSet]::new("Start", "Stop", "Create", "Delete")
+                        )
+                    )
+                    $paramDictionary.Add($parameter.Name, $parameter)
         }
-        #Return all the dynamic parameters inside the dictionary
-        return $paramDictionary
+        
+        $paramDictionary
     }
 
     begin {
