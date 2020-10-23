@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 
 ## [Unreleased]
+### Added
+- Updated the format of the dynamic parameters based on the help from chrisdent (https://discord.gg/winadmin ) makes it much more readable and can remove all teh commenting. 
 
 ## [1.4.20201022.0] - 2020-10-22
 ### Added

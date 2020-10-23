@@ -10,7 +10,7 @@ $ObjectSchemaKey = "MPE"
 $ObjectSchemaDescription = "Example CMDB Schema built with PSInsight"
 $ObjectTypeName = "ZoomRooms"
 $ObjectTypeDescription = "ZoomRooms"
-$ObjectTypeIcon = "AV Receiver" # Avalible icons can be found here 'Get-InsightIcons -InsightApiKey $InsightApiKey'
+$ObjectTypeIcon = "AV Receiver" # Avalible icons can be found here 'Get-InsightIcons '
 
 #Path to CSV containing the list of attributes
 $RequiredZoomRoomAttributes = Import-Csv ".\Attributes_ZoomRoom.csv"
@@ -51,42 +51,42 @@ Test-Module PSInsight
 
 # Schema setup
 try {
-    $InsightObjectSchema = Get-InsightObjectSchema -InsightApiKey $InsightApiKey | Where { $_.name -like $ObjectSchemaName }
+    $InsightObjectSchema = Get-InsightObjectSchema| Where { $_.name -like $ObjectSchemaName }
     Write-Verbose 'Object Schema not found'
 }
 catch {
-    $InsightObjectSchema = New-InsightObjectSchema -Name $ObjectSchemaName -ObjectSchemaKey $ObjectSchemaKey -Description $ObjectSchemaDescription -InsightApiKey $InsightApiKey
+    $InsightObjectSchema = New-InsightObjectSchema -Name $ObjectSchemaName -ObjectSchemaKey $ObjectSchemaKey -Description $ObjectSchemaDescription 
     Write-Verbose 'Object Schema has been created'
 }
 
 # Create Zoom Room Object Type
 try {
-    $ZoomRoomObjectType = Get-InsightObjectTypes -ID $InsightObjectSchema.id -InsightApiKey $InsightApiKey | Where { $_.Name -like $ObjectTypename }
+    $ZoomRoomObjectType = Get-InsightObjectTypes -ID $InsightObjectSchema.id| Where { $_.Name -like $ObjectTypename }
     if (!($ZoomRoomObjectType)) {
         throw "$ObjectTypename - Object not found"
         Write-Verbose 'Object Type not found'
     }
 }
 catch {
-    $IconID = (Get-InsightIcons -InsightApiKey $InsightApiKey | Where { $_.name -like $ObjectTypeIcon }).id
+    $IconID = (Get-InsightIcons| Where { $_.name -like $ObjectTypeIcon }).id
     $SchemaID = $($InsightObjectSchema.id).ToString()
-    $ZoomRoomObjectType = New-InsightObjectTypes -Name $ObjectTypeName -Description $ObjectTypeDescription -IconID $IconID -objectSchemaId $SchemaID -InsightApiKey $InsightApiKey
+    $ZoomRoomObjectType = New-InsightObjectTypes -Name $ObjectTypeName -Description $ObjectTypeDescription -IconID $IconID -objectSchemaId $SchemaID 
     Write-Verbose 'Object Type has been created'
 }
 
 # Build a list of existing attributes on the object (used to catch and rebuild if failures occur).
-$ExistingZoomRoomAttributes = Get-InsightObjectTypeAttributes -ID $ZoomRoomObjectType.id -InsightApiKey $InsightApiKey
+$ExistingZoomRoomAttributes = Get-InsightObjectTypeAttributes -ID $ZoomRoomObjectType.id 
 # Import list of attributes from CSV and find any missing from host
 $MissingZoomRoomAttributes = $RequiredZoomRoomAttributes | Where-Object { $ExistingZoomRoomAttributes.name -notcontains $_.name }
 
 #Create any missing attributes
 foreach ($Attribute in $MissingZoomRoomAttributes) {
-    New-InsightObjectTypeAttributes -Name $Attribute.name -Type $Attribute.Type -DefaultType $Attribute.DefaultType -ParentObjectTypeId $ZoomRoomObjectType.id -InsightApiKey $InsightApiKey
+    New-InsightObjectTypeAttributes -Name $Attribute.name -Type $Attribute.Type -DefaultType $Attribute.DefaultType -ParentObjectTypeId $ZoomRoomObjectType.id 
     Write-Verbose "$Attribute.name: Created"
 }
 
 # Get the full list of attributes from the host again with all properties to be used elsewhere if needed. 
-$ZoomRoomAttributes = Get-InsightObjectTypeAttributes -ID $ZoomRoomObjectType.id -InsightApiKey $InsightApiKey
+$ZoomRoomAttributes = Get-InsightObjectTypeAttributes -ID $ZoomRoomObjectType.id 
 
 #Turn off verbose after script runs. 
 $VerbosePreference = "silentlycontinue"

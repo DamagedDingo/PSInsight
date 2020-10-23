@@ -74,7 +74,6 @@ New-InsightObject -objectTypeId 2 -attributes $array -InsightApiKey $InsightApiK
             
         
         $RequestBody = ConvertTo-Json $RequestBody -Depth 20
-        $RequestBody
     }
     
     end {
