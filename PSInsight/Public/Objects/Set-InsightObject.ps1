@@ -45,7 +45,7 @@ https://documentation.mindville.com/display/INSCLOUD/REST+API+-+Object+schema
     }
     
     process {
-        $Request = [System.UriBuilder]"https://insight-api.riada.iorest/insight/1.0/object/$($ID)"
+        $Request = [System.UriBuilder]"https://insight-api.riada.io/rest/insight/1.0/object/$($ID)"
 
         $RequestBody = @{
             'objectTypeId' = $objectTypeId
