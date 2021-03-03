@@ -37,23 +37,23 @@ $array = @($1,$2) # For use with New-InsightObject
 
         [ValidateNotNullOrEmpty()]
         [Parameter(Mandatory = $true,valuefrompipelinebypropertyname = $true)]
-        [String]$objectAttributeValues
+        [String[]]$objectAttributeValues
     )
     
     begin {
-       
+        $values = New-Object System.Collections.ArrayList 
     }
     
     process {
-
+        $objectAttributeValues | ForEach-Object {
+            $values.Add(@{'value' = $_}) | Out-Null
+        }        
         $Attribute = @{
             'objectTypeAttributeId' = $objectTypeAttributeId
-            'objectAttributeValues'   = @(@{
-                'value' = $objectAttributeValues
-                })
+            'objectAttributeValues'   = @($values)
             }
 
-    }
+}
     
     end {
                 
