@@ -192,10 +192,10 @@ New-InsightObjectTypeAttributes -Name "Link to Parent" -Type Object -typeValue 2
         if ($Type -in "Object","URL","Confluence","User") {
 
             if ($Type -like "Object") {
-                $Mandatory = $attributes.Mandatory = $true
+                $Mandatory =  $true
             }
             else {
-                $Mandatory = $attributes.Mandatory = $false
+                $Mandatory = $false
             }
 
             if ($Type -like "URL") {
@@ -210,7 +210,9 @@ New-InsightObjectTypeAttributes -Name "Link to Parent" -Type Object -typeValue 2
                         [string],
                         [Attribute[]]@(
                             [Parameter]@{ Mandatory = $Mandatory; Position = 1 }
-                            [ValidateSet]::new($ValidatedSet)
+                                if ($type -in "URL","User") {
+                                    [ValidateSet]::new($ValidatedSet)
+                                }
                         )
                     )
                     $paramDictionary.Add($parameter.Name, $parameter)

@@ -1,0 +1,8 @@
+{
+    "ObjectSchemaName": "CompanyName",
+    "ObjectSchemaKey": "CN1",
+    "ObjectSchemaDescription": "CompanyName CMDB Schema",
+    "ObjectTypeName": "ZoomRooms",
+    "ObjectTypeDescription": "ZoomRooms",
+    "ObjectTypeIcon": "AV Receiver"
+}

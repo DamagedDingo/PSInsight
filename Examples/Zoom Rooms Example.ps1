@@ -5,16 +5,9 @@ $VerbosePreference = "continue"
 
 #region Variables
 $Global:InsightApiKey = "Place-Your-API-Key-Here"
-$ObjectSchemaName = "My PSInsight Example"
-$ObjectSchemaKey = "MPE"
-$ObjectSchemaDescription = "Example CMDB Schema built with PSInsight"
-$ObjectTypeName = "ZoomRooms"
-$ObjectTypeDescription = "ZoomRooms"
-$ObjectTypeIcon = "AV Receiver" # Avalible icons can be found here 'Get-InsightIcons '
 
-#Path to CSV containing the list of attributes
-$RequiredZoomRoomAttributes = Import-Csv ".\Attributes_ZoomRoom.csv"
-#endregion Variables
+#Turn on script wide verbose for testing
+$VerbosePreference = "continue"
 
 #region Required-Modules
 function Test-Module ($m) {
@@ -47,46 +40,158 @@ function Test-Module ($m) {
 }
 
 Test-Module PSInsight
+Test-Module Microsoft.PowerShell.SecretManagement
 #endregion Required-Modules
+
+#Import JSON attributes
+$SchemaJSON = Get-Content -Raw ".\Examples\Schema.json" | ConvertFrom-Json
+$ZoomRoomJSON = Get-Content -Raw ".\Examples\ZoomRoom_Attributes.json" | ConvertFrom-Json
+#endregion Variables
 
 # Schema setup
 try {
-    $InsightObjectSchema = Get-InsightObjectSchema| Where { $_.name -like $ObjectSchemaName }
-    Write-Verbose 'Object Schema not found'
+    $HashArguments = @{
+        InsightApiKey = $InsightApiKey
+    }
+    $InsightObjectSchema = Get-InsightObjectSchema @HashArguments | Where { $_.name -like $SchemaJSON.ObjectSchemaName }
+    if (!($InsightObjectSchema)) {
+        throw 'Object Schema not found'
+        # Write-Verbose 'Object Type not found'
+    }
+    #Write-Verbose 'Object Schema not found'
 }
 catch {
-    $InsightObjectSchema = New-InsightObjectSchema -Name $ObjectSchemaName -ObjectSchemaKey $ObjectSchemaKey -Description $ObjectSchemaDescription 
+    $HashArguments = @{
+        Name = $SchemaJSON.ObjectSchemaName
+        ObjectSchemaKey = $SchemaJSON.ObjectSchemaKey
+        Description = $SchemaJSON.ObjectSchemaDescription
+        InsightApiKey = $InsightApiKey
+    }
+    $InsightObjectSchema = New-InsightObjectSchema @HashArguments
     Write-Verbose 'Object Schema has been created'
 }
 
 # Create Zoom Room Object Type
 try {
-    $ZoomRoomObjectType = Get-InsightObjectTypes -ID $InsightObjectSchema.id| Where { $_.Name -like $ObjectTypename }
+    $HashArguments = @{
+        objectschemaID = $InsightObjectSchema.id
+        InsightApiKey = $InsightApiKey
+    }
+    $ZoomRoomObjectType = Get-InsightObjectTypes @HashArguments | Where { $_.Name -like $ZoomRoomJSON.Name }
     if (!($ZoomRoomObjectType)) {
-        throw "$ObjectTypename - Object not found"
+        throw "$($ZoomRoomJSON.Name) - Object not found"
         Write-Verbose 'Object Type not found'
     }
 }
 catch {
-    $IconID = (Get-InsightIcons| Where { $_.name -like $ObjectTypeIcon }).id
-    $SchemaID = $($InsightObjectSchema.id).ToString()
-    $ZoomRoomObjectType = New-InsightObjectTypes -Name $ObjectTypeName -Description $ObjectTypeDescription -IconID $IconID -objectSchemaId $SchemaID 
+    $HashArguments = @{
+        Name = $ZoomRoomJSON.Name
+        Description = $ZoomRoomJSON.Description
+        IconID = (Get-InsightIcons -InsightApiKey $InsightApiKey | Where { $_.name -like $ZoomRoomJSON.Icon }).id
+        objectSchemaId = $($InsightObjectSchema.id).ToString()
+        InsightApiKey = $InsightApiKey
+    }
+    $ZoomRoomObjectType = New-InsightObjectTypes @HashArguments
     Write-Verbose 'Object Type has been created'
 }
 
-# Build a list of existing attributes on the object (used to catch and rebuild if failures occur).
-$ExistingZoomRoomAttributes = Get-InsightObjectTypeAttributes -ID $ZoomRoomObjectType.id 
-# Import list of attributes from CSV and find any missing from host
-$MissingZoomRoomAttributes = $RequiredZoomRoomAttributes | Where-Object { $ExistingZoomRoomAttributes.name -notcontains $_.name }
+#Get existing Attributes
+$HashArguments = @{
+    ID = $ZoomRoomObjectType.id
+    InsightApiKey = $InsightApiKey
+}
+$ExistingZoomRoomAttributes = Get-InsightObjectTypeAttributes @HashArguments
 
-#Create any missing attributes
+#Find missing Attributes
+$MissingZoomRoomAttributes = $ZoomRoomJSON.Attributes | Where-Object { $ExistingZoomRoomAttributes.name -notcontains $_.name }
+
+# Create any missing attributes
 foreach ($Attribute in $MissingZoomRoomAttributes) {
-    New-InsightObjectTypeAttributes -Name $Attribute.name -Type $Attribute.Type -DefaultType $Attribute.DefaultType -ParentObjectTypeId $ZoomRoomObjectType.id 
-    Write-Verbose "$Attribute.name: Created"
+    $HashArguments = @{
+        Name = $Attribute.name
+        Type = $Attribute.Type
+        DefaultType = $Attribute.DefaultType
+        ParentObjectTypeId = $ZoomRoomObjectType.id
+        InsightApiKey = $InsightApiKey
+    }
+    New-InsightObjectTypeAttributes @HashArguments
+    Write-Verbose "$($Attribute.name): Created"
 }
 
-# Get the full list of attributes from the host again with all properties to be used elsewhere if needed. 
-$ZoomRoomAttributes = Get-InsightObjectTypeAttributes -ID $ZoomRoomObjectType.id 
+# Create links
+<# if ($ZoomRoomJSON.Links) {
+    
+    foreach ($link in $ZoomRoomJSON.Links) {
+        $HashArguments = @{
+            Name = $link.name
+            Type = $link.Type
+            TypeValue = $link.TypeValue
+            additionalValue = "SHOW_PROFILE"
+            Description = $link.description
+            parentObjectTypeId = $ObjectType.id
+            InsightApiKey = $InsightApiKey
+        }
+        # additionalValue = 1 will set the link to type dependency
+        New-InsightObjectTypeAttributes @HashArguments
+    }
+} #>
+
+# Get the full list of attributes from the host again with all properties to be used elsewhere if needed.
+$HashArguments = @{
+    ID = $ZoomRoomObjectType.id
+    InsightApiKey = $InsightApiKey
+}
+$ZoomRoomAttributes = Get-InsightObjectTypeAttributes @HashArguments
+
+
+# Build Children
+$HashArguments = @{
+    objectschemaID = $InsightObjectSchema.id
+    InsightApiKey = $InsightApiKey
+}
+$existingObjectTypes = Get-InsightObjectTypes @HashArguments
+
+foreach ($child in $ZoomRoomJSON.Children) {
+    
+    if ($existingObjectTypes.name -notcontains $_.name ) {
+        $HashArguments = @{
+            name = $child.Name
+            description = $child.Description
+            parentObjectTypeId = $ZoomRoomObjectType.id
+            iconID = (Get-InsightIcons -InsightApiKey $InsightApiKey | Where { $_.name -like $child.Icon }).id
+            objectSchemaId = $($InsightObjectSchema.id).ToString()
+            InsightApiKey = $InsightApiKey
+        }
+        $ObjectType = New-InsightObjectTypes @HashArguments
+
+        #build attributes
+        foreach ($attribute in $child.Attributes) {
+            
+                $HashArguments = @{
+                    Name = $attribute.name
+                    Type = $attribute.Type
+                    DefaultType = $attribute.DefaultValue
+                    ParentObjectTypeId = $ObjectType.id
+                    InsightApiKey = $InsightApiKey
+                }
+                New-InsightObjectTypeAttributes @HashArguments
+            
+        }
+
+        if ($child.link) {
+            $HashArguments = @{
+                Name = $child.link.name
+                Type = $child.link.Type
+                TypeValue = $ZoomRoomObjectType.id
+                additionalValue = "1"
+                InsightApiKey = $InsightApiKey
+                parentObjectTypeId = $ObjectType.id
+            }
+            # additionalValue = 1 will set the link to type dependency
+            New-InsightObjectTypeAttributes @HashArguments
+        }
+    }
+}
 
 #Turn off verbose after script runs. 
 $VerbosePreference = "silentlycontinue"

@@ -1,0 +1,269 @@
+{
+    "Name":"Zoom Room",
+    "Description": "Zoom Room Information",
+    "Icon": "AV Receiver",
+    "Attributes": [
+        {
+            "name": "zoom_id",
+            "type" : "Default",
+            "DefaultType": "Text"
+        },
+        {
+            "name": "zoom_room_id",
+            "type" : "Default",
+            "DefaultType": "Text"
+        },
+        {
+            "name": "location_id",
+            "type" : "Default",
+            "DefaultType": "Text"
+        },
+        {
+            "name": "status",
+            "type" : "Default",
+            "DefaultType": "Text"
+        },
+        {
+            "name": "calendar_name",
+            "type" : "Default",
+            "DefaultType": "Text"
+        },
+        {
+            "name": "email",
+            "type" : "Default",
+            "DefaultType": "Email"
+        },
+        {
+            "name": "account_type",
+            "type" : "Default",
+            "DefaultType": "Text"
+        },
+        {
+            "name": "device_ip",
+            "type" : "Default",
+            "DefaultType": "Text"
+        },
+        {
+            "name": "camera",
+            "type" : "Default",
+            "DefaultType": "Text"
+        },
+        {
+            "name": "microphone",
+            "type" : "Default",
+            "DefaultType": "Text"
+        },
+        {
+            "name": "speaker",
+            "type" : "Default",
+            "DefaultType": "Text"
+        },
+        {
+            "name": "last_start_time",
+            "type" : "Default",
+            "DefaultType": "Text"
+        },
+        {
+            "name": "issues",
+            "type" : "Default",
+            "DefaultType": "Text"
+        },
+        {
+            "name": "health",
+            "type" : "Default",
+            "DefaultType": "Text"
+        },
+        {
+            "name": "floor",
+            "type" : "Default",
+            "DefaultType": "Text"
+        },
+        {
+            "name": "campus",
+            "type" : "Default",
+            "DefaultType": "Text"
+        },
+        {
+            "name": "city",
+            "type" : "Default",
+            "DefaultType": "Text"
+        },
+        {
+            "name": "state",
+            "type" : "Default",
+            "DefaultType": "Text"
+        },
+        {
+            "name": "country",
+            "type" : "Default",
+            "DefaultType": "Text"
+        }
+    ],
+    "Links": [
+        {
+            "name": "Business Owner",
+            "type" : "User",
+            "DefaultType": "Text",
+            "Description": "Business Owner is frequently a senior level staff such as department head"
+        },
+        {
+            "name": "Service Owner",
+            "type" : "User",
+            "DefaultType": "Text",
+            "Description": "Service Owner is frequently a director of the organization that owns the service."
+        },
+        {
+            "name": "Service Manager",
+            "type" : "User",
+            "DefaultType": "Text",
+            "Description": "Service Manager is frequently a Manager in the organization that owns the service."
+        },
+        {
+            "name": "Technical Operations Owner",
+            "type" : "User",
+            "DefaultType": "Text",
+            "Description": "Technical Operations Owner's sole focus is the support and maintenance of the underlying service technology."
+        },
+        {
+            "name": "Business Operations Owner",
+            "type" : "User",
+            "DefaultType": "Text",
+            "Description": "Business Operations Owner provides support to end-users of the service. (Generally Service Desk)"
+        },
+        {
+            "name": "Subscribed Stakeholders",
+            "type" : "User",
+            "DefaultType": "Text",
+            "Description": "Enter email address of users who would like to be notified about the status of this service.",
+            "maximumCardinality": "-1"
+        }
+    ],
+    "Children": [
+        {
+            "Name": "iOS Controller",
+            "Description": "Zoom Room Controllers running iOS",
+            "Icon": "iOS",
+            "Attributes": [
+                {
+                    "name": "zoom_device_id",
+                    "type": "Default",
+                    "DefaultValue": "Text"
+                },
+                {
+                    "name": "device_type",
+                    "type": "Default",
+                    "DefaultValue": "Text"
+                },
+                {
+                    "Name": "app_version",
+                    "type": "Default",
+                    "DefaultValue": "Text"
+                },
+                {
+                    "name": "device_system",
+                    "type": "Default",
+                    "DefaultValue": "Text"
+                },
+                {
+                    "name": "status",
+                    "type": "Default",
+                    "DefaultValue": "Text"
+                },
+                {
+                    "name": "device_name",
+                    "type": "Default",
+                    "DefaultValue": "Text"
+                }
+            ],
+            "Link": {
+                    "name": "parent_room",
+                    "type": "Object",
+                    "additionalValue": "1"
+            }
+        },
+        {
+            "Name": "Android Controller",
+            "Description": "Zoom Room Controllers running Android",
+            "Icon": "Android",
+            "Attributes": [
+                {
+                    "name": "zoom_device_id",
+                    "type": "Default",
+                    "DefaultValue": "Text"
+                },
+                {
+                    "name": "device_type",
+                    "type": "Default",
+                    "DefaultValue": "Text"
+                },
+                {
+                    "Name": "app_version",
+                    "type": "Default",
+                    "DefaultValue": "Text"
+                },
+                {
+                    "name": "device_system",
+                    "type": "Default",
+                    "DefaultValue": "Text"
+                },
+                {
+                    "name": "status",
+                    "type": "Default",
+                    "DefaultValue": "Text"
+                },
+                {
+                    "name": "device_name",
+                    "type": "Default",
+                    "DefaultValue": "Text"
+                }
+            ],
+            "Link": {
+                    "name": "parent_room",
+                    "type": "Object",
+                    "additionalValue": "1"
+            }
+        },
+        {
+            "Name": "Server",
+            "Description": "Zoom Room Servers",
+            "Icon": "Windows Client",
+            "Attributes": [
+                {
+                    "name": "zoom_device_id",
+                    "type": "Default",
+                    "DefaultValue": "Text"
+                },
+                {
+                    "name": "device_type",
+                    "type": "Default",
+                    "DefaultValue": "Text"
+                },
+                {
+                    "Name": "app_version",
+                    "type": "Default",
+                    "DefaultValue": "Text"
+                },
+                {
+                    "name": "device_system",
+                    "type": "Default",
+                    "DefaultValue": "Text"
+                },
+                {
+                    "name": "status",
+                    "type": "Default",
+                    "DefaultValue": "Text"
+                },
+                {
+                    "name": "device_name",
+                    "type": "Default",
+                    "DefaultValue": "Text"
+                }
+            ],
+            "Link": {
+                    "name": "parent_room",
+                    "type": "Object",
+                    "additionalValue": "1"
+            }
+    }
+    ]
+}
