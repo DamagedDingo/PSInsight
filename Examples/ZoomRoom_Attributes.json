@@ -9,11 +9,6 @@
             "DefaultType": "Text"
         },
         {
-            "name": "zoom_room_id",
-            "type" : "Default",
-            "DefaultType": "Text"
-        },
-        {
             "name": "location_id",
             "type" : "Default",
             "DefaultType": "Text"
@@ -145,11 +140,6 @@
             "Icon": "iOS",
             "Attributes": [
                 {
-                    "name": "zoom_device_id",
-                    "type": "Default",
-                    "DefaultValue": "Text"
-                },
-                {
                     "name": "device_type",
                     "type": "Default",
                     "DefaultValue": "Text"
@@ -166,11 +156,6 @@
                 },
                 {
                     "name": "status",
-                    "type": "Default",
-                    "DefaultValue": "Text"
-                },
-                {
-                    "name": "device_name",
                     "type": "Default",
                     "DefaultValue": "Text"
                 }
@@ -186,12 +171,7 @@
             "Description": "Zoom Room Controllers running Android",
             "Icon": "Android",
             "Attributes": [
-                {
-                    "name": "zoom_device_id",
-                    "type": "Default",
-                    "DefaultValue": "Text"
-                },
-                {
+               {
                     "name": "device_type",
                     "type": "Default",
                     "DefaultValue": "Text"
@@ -208,11 +188,6 @@
                 },
                 {
                     "name": "status",
-                    "type": "Default",
-                    "DefaultValue": "Text"
-                },
-                {
-                    "name": "device_name",
                     "type": "Default",
                     "DefaultValue": "Text"
                 }
@@ -224,15 +199,10 @@
             }
         },
         {
-            "Name": "Server",
+            "Name": "Zoom Server",
             "Description": "Zoom Room Servers",
             "Icon": "Windows Client",
             "Attributes": [
-                {
-                    "name": "zoom_device_id",
-                    "type": "Default",
-                    "DefaultValue": "Text"
-                },
                 {
                     "name": "device_type",
                     "type": "Default",
@@ -250,11 +220,6 @@
                 },
                 {
                     "name": "status",
-                    "type": "Default",
-                    "DefaultValue": "Text"
-                },
-                {
-                    "name": "device_name",
                     "type": "Default",
                     "DefaultValue": "Text"
                 }
