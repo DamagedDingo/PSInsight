@@ -73,6 +73,12 @@ New-InsightObjectTypes -Name "My Object Type" -Description "A Sample Object Type
         [Parameter(Mandatory = $true)]
         $objectSchemaId,
 
+        [Parameter(Mandatory = $false)]
+        $inherited,
+
+        [Parameter(Mandatory = $false)]
+        $abstractObjectType,
+
         [ValidateNotNullOrEmpty()]
         [Alias('ApiKey')]
         [string]$InsightApiKey = $InsightApiKey
@@ -97,7 +103,13 @@ New-InsightObjectTypes -Name "My Object Type" -Description "A Sample Object Type
         If ($parentObjectTypeId) {
             $RequestBody.Add('parentObjectTypeId', $parentObjectTypeId)
         }
-        
+        If ($inherited) {
+            $RequestBody.Add('inherited', $inherited)
+        }
+        If ($abstractObjectType) {
+            $RequestBody.Add('abstractObjectType', $abstractObjectType)
+        }
+
         $RequestBody = ConvertTo-Json $RequestBody -Depth 1
     }
     
