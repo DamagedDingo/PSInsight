@@ -22,6 +22,12 @@ The parent object type id that new object will be placed in
 .PARAMETER objectSchemaId
 The object schema id
 
+.PARAMETER inherited
+The object schema id
+
+.PARAMETER abstractObjectType
+Set to tru 
+
 .PARAMETER InsightApiKey
 The Api key.
 
@@ -74,9 +80,11 @@ New-InsightObjectTypes -Name "My Object Type" -Description "A Sample Object Type
         $objectSchemaId,
 
         [Parameter(Mandatory = $false)]
+        [ValidateSet('true','false')]
         $inherited,
 
         [Parameter(Mandatory = $false)]
+        [ValidateSet('true','false')]
         $abstractObjectType,
 
         [ValidateNotNullOrEmpty()]
