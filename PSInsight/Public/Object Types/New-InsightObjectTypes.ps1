@@ -17,7 +17,7 @@ The object type description.
 The object type icon ID.
 
 .PARAMETER ParentObjectTypeID
-The parent object type id that new object will be placed in
+The parent object type id that new child object will be placed in
 
 .PARAMETER objectSchemaId
 The object schema id

@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 Add comment under [Unreleased] and commit with !Deploy!
 
 ## [Unreleased]
+### Added
 - Update New-InsightObjectTypes to support more parameters (abstractObjectType & inherited).
 
 ## [1.5.20201023.0] - 2020-10-23
