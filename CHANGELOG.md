@@ -3,9 +3,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+Add comment under [Unreleased] and commit with !Build!
 
-## [1.5.20210407.0] - 2021-04-07
-### Added
+## [Unreleased]
 - Update New-InsightObjectTypes to support more parameters (abstractObjectType & inherited).
 
 ## [1.5.20201023.0] - 2020-10-23
