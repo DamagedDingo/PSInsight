@@ -26,7 +26,7 @@ The object schema id
 The object schema id
 
 .PARAMETER abstractObjectType
-Set to tru 
+Set to true to not allow CI's to be created at this level
 
 .PARAMETER InsightApiKey
 The Api key.

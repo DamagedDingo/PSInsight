@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.5.20210407.0] - 2021-04-07
+### Added
+- Update New-InsightObjectTypes to support more parameters (abstractObjectType & inherited).
+
 ## [1.5.20201023.0] - 2020-10-23
 ### Added
 - Updated the format of the dynamic parameters based on the help from chrisdent (https://discord.gg/winadmin ) makes it much more readable and can remove all teh commenting. 
