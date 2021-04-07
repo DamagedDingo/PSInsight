@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-Add comment under [Unreleased] and commit with !Build!
+Add comment under [Unreleased] and commit with !Deploy!
 
 ## [Unreleased]
 - Update New-InsightObjectTypes to support more parameters (abstractObjectType & inherited).
