@@ -10,6 +10,9 @@ Format as below (Requires the '### Added' as a header or task fails)
 ...- Update ReadMe.MD
 
 ## [Unreleased]
+### Added
+- 'Test-Module PSInsight' added to examples to ensure module is loaded
+- Populate_ZoomRooms sample script added
 
 ## [1.9.20210408.0] - 2021-04-08
 ### Added

@@ -1,3 +1,5 @@
+Test-Module PSInsight
+
 $SchemaID = $(Get-InsightObjectSchema | Where { $_.name -eq 'CompanyName'}).id
 $JSONpath = '.\PSInsight\Examples'
 $Objects = Get-Content "$JSONpath\ObjectTypes.json" -Raw | ConvertFrom-Json
