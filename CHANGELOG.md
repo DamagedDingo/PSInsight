@@ -10,6 +10,8 @@ Format as below (Requires the '### Added' as a header or task fails)
 ...- Update ReadMe.MD
 
 ## [Unreleased]
+
+## [1.11.20210408.0] - 2021-04-08
 ### Added
 - Rearranged ObjectTypes.json
 - Added 'SCCM Example.ps1' (Currently only building Computer Object..)
@@ -64,7 +66,8 @@ Format as below (Requires the '### Added' as a header or task fails)
 
 ## [1.0.0] - 2020-10-15
 ### Added
-- Added to start versioning[Unreleased]: https://github.com/DamagedDingo/PSInsight/compare/1.10.20210408.0..HEAD
+- Added to start versioning[Unreleased]: https://github.com/DamagedDingo/PSInsight/compare/1.11.20210408.0..HEAD
+[1.11.20210408.0]: https://github.com/DamagedDingo/PSInsight/compare/1.10.20210408.0..1.11.20210408.0
 [1.10.20210408.0]: https://github.com/DamagedDingo/PSInsight/compare/1.9.20210408.0..1.10.20210408.0
 [1.9.20210408.0]: https://github.com/DamagedDingo/PSInsight/compare/1.8.20210408.0..1.9.20210408.0
 [1.8.20210408.0]: https://github.com/DamagedDingo/PSInsight/compare/1.7.20210408.0..1.8.20210408.0

@@ -12,7 +12,7 @@
 RootModule = 'PSInsight.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.10.20210408.0'
+ModuleVersion = '1.11.20210408.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -120,8 +120,8 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = 'Added
-- ''Test-Module PSInsight'' added to examples to ensure module is loaded
-- Populate_ZoomRooms sample script added'
+- Rearranged ObjectTypes.json
+- Added ''SCCM Example.ps1'' (Currently only building Computer Object..)'
 
         # Prerelease string of this module
         # Prerelease = ''
