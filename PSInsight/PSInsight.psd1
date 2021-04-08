@@ -12,7 +12,7 @@
 RootModule = 'PSInsight.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.7.20210408.0'
+ModuleVersion = '1.8.20210408.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -120,11 +120,8 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = 'Added
-- Updated ReadMe.md
-- Build-ObjectType and Build-Schema added to build the database from JSON input (See examples folder).
-- Examples\Schema added to provide sample data and script to automaticly build a Schema.
-- Examples\ObjectTypes added to provide sample data and script to automaticly build ObjectTypes within the schema.
-- Superseeded example files removed'
+- Move Test-Module from Private to public\build
+- Update ReadMe.MD'
 
         # Prerelease string of this module
         # Prerelease = ''

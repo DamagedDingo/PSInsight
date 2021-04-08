@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 Add comment under [Unreleased] and commit with !Deploy!
 
 ## [Unreleased]
+
+## [1.8.20210408.0] - 2021-04-08
 ### Added
 - Move Test-Module from Private to public\build
 - Update ReadMe.MD
@@ -45,7 +47,8 @@ Add comment under [Unreleased] and commit with !Deploy!
 
 ## [1.0.0] - 2020-10-15
 ### Added
-- Added to start versioning[Unreleased]: https://github.com/DamagedDingo/PSInsight/compare/1.7.20210408.0..HEAD
+- Added to start versioning[Unreleased]: https://github.com/DamagedDingo/PSInsight/compare/1.8.20210408.0..HEAD
+[1.8.20210408.0]: https://github.com/DamagedDingo/PSInsight/compare/1.7.20210408.0..1.8.20210408.0
 [1.7.20210408.0]: https://github.com/DamagedDingo/PSInsight/compare/1.6.20210407.0..1.7.20210408.0
 [1.6.20210407.0]: https://github.com/DamagedDingo/PSInsight/compare/1.5.20201023.0..1.6.20210407.0
 [1.5.20201023.0]: https://github.com/DamagedDingo/PSInsight/compare/1.4.20201022.0..1.5.20201023.0
