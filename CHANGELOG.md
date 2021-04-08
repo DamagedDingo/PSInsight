@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 Add comment under [Unreleased] and commit with !Deploy!
 
 ## [Unreleased]
+### Added
+- Updated ReadMe.md
+- Build-ObjectType and Build-Schema added to build the database from JSON input (See examples folder).
+- Examples\Schema added to provide sample data and script to automaticly build a Schema.
+- Examples\ObjectTypes added to provide sample data and script to automaticly build ObjectTypes within the schema.
+- Superseeded example files removed
+
 
 ## [1.6.20210407.0] - 2021-04-07
 ### Added

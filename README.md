@@ -42,14 +42,9 @@ For ease of use, each command looks for the variable automatically in the follow
 
 # Example Script #
 ```
-import-module PSInsight
-$Global:InsightApiKey    = 'API_Key_Goes_Here'  
-New-InsightObjectSchema -Name "MyObjSch" -ObjectSchemaKey "MOS" -Description "New Obj Sch"
+The Examples folder contains samples on how to build the schema as well as object types.
+The corrisponding JSON file will show how to structure the data for the builder scripts.
 ```
-A complete example script has been placed inside the Examples folder.
-The script will build the Insight Schema and Object types for Zoom rooms,
-attributes will be added from the 'Attributes_ZoomRoom.csv' to save time
-and allow for customisation.
 
 ![Schema](https://i.imgur.com/NByWKhl.png)
 ![Attributes](https://i.imgur.com/GzvExXL.png)
@@ -96,6 +91,12 @@ Get-InsightStatuses
 New-InsightStatuses
 Remove-InsightStatuses
 Set-InsightStatuses
+```
+## Build ##
+These are custom functions to build out your Schema and ObjectTypes as per the example scripts.
+```
+Build-Schema
+Build-ObjectTypes
 ```
 ## Private ##
 ```
