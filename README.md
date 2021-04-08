@@ -41,10 +41,8 @@ For ease of use, each command looks for the variable automatically in the follow
     A prompt to host to enter Key manually  
 
 # Example Script #
-```
 The Examples folder contains samples on how to build the schema as well as object types.
 The corrisponding JSON file will show how to structure the data for the builder scripts.
-```
 
 ![Schema](https://i.imgur.com/NByWKhl.png)
 ![Attributes](https://i.imgur.com/GzvExXL.png)
@@ -97,9 +95,9 @@ These are custom functions to build out your Schema and ObjectTypes as per the e
 ```
 Build-Schema
 Build-ObjectTypes
+Test-Module
 ```
 ## Private ##
 ```
 New-InsightHeaders
-Test-Module
 ```
