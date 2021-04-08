@@ -10,6 +10,9 @@ Format as below (Requires the '### Added' as a header or task fails)
 ...- Update ReadMe.MD
 
 ## [Unreleased]
+### Added
+- Rearranged ObjectTypes.json
+- Added 'SCCM Example.ps1' (Currently only building Computer Object..)
 
 ## [1.10.20210408.0] - 2021-04-08
 ### Added
