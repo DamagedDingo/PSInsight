@@ -10,6 +10,8 @@ Format as below (Requires the '### Added' as a header or task fails)
 ...- Update ReadMe.MD
 
 ## [Unreleased]
+
+## [1.9.20210408.0] - 2021-04-08
 ### Added
 - Renamed Build Folder to Builder as 'Build' is a reserved folder for github actions. 
 - Edit ReadMe.MD 
@@ -54,7 +56,8 @@ Format as below (Requires the '### Added' as a header or task fails)
 
 ## [1.0.0] - 2020-10-15
 ### Added
-- Added to start versioning[Unreleased]: https://github.com/DamagedDingo/PSInsight/compare/1.8.20210408.0..HEAD
+- Added to start versioning[Unreleased]: https://github.com/DamagedDingo/PSInsight/compare/1.9.20210408.0..HEAD
+[1.9.20210408.0]: https://github.com/DamagedDingo/PSInsight/compare/1.8.20210408.0..1.9.20210408.0
 [1.8.20210408.0]: https://github.com/DamagedDingo/PSInsight/compare/1.7.20210408.0..1.8.20210408.0
 [1.7.20210408.0]: https://github.com/DamagedDingo/PSInsight/compare/1.6.20210407.0..1.7.20210408.0
 [1.6.20210407.0]: https://github.com/DamagedDingo/PSInsight/compare/1.5.20201023.0..1.6.20210407.0

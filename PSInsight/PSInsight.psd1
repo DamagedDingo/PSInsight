@@ -12,7 +12,7 @@
 RootModule = 'PSInsight.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.8.20210408.0'
+ModuleVersion = '1.9.20210408.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -77,9 +77,9 @@ FunctionsToExport = 'Get-InsightObjectSchema', 'New-InsightObjectSchema',
                'New-InsightObjectTypeAttributes', 
                'Remove-InsightObjectTypeAttributes', 
                'Set-InsightObjectTypeAttributes', 'Get-InsightIcons', 
-               'Get-InsightObject', 'New-InsightObject', 
-               'New-InsightObjectAttribute', 'Remove-InsightObject', 
-               'Set-InsightObject', 'Get-InsightObjectTypes', 
+               'Build-ObjectType', 'Build-Schema', 'Test-Module', 'Get-InsightObject', 
+               'New-InsightObject', 'New-InsightObjectAttribute', 
+               'Remove-InsightObject', 'Set-InsightObject', 'Get-InsightObjectTypes', 
                'New-InsightObjectTypes', 'Remove-InsightObjectTypes', 
                'Set-InsightObjectTypes'
 
@@ -120,8 +120,8 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = 'Added
-- Move Test-Module from Private to public\build
-- Update ReadMe.MD'
+- Renamed Build Folder to Builder as ''Build'' is a reserved folder for github actions. 
+- Edit ReadMe.MD '
 
         # Prerelease string of this module
         # Prerelease = ''
