@@ -1,197 +1,137 @@
-# Example Script to build all required prperties to support Zoom Rooms within Jira Insight
+$SchemaName = 'CompanyName'
+$ObjectTypeName = 'Zoom Room'
+$Global:InsightApiKey = Get-Secret -Name 'Insight_API' -AsPlainText
+$ZoomApiKey = Get-Secret -Name 'ZoomRooms_API' -AsPlainText
+$ZoomApiSecret = Get-Secret -Name 'ZoomRooms_API_Secret' -AsPlainText
 
-#Turn on script wide verbose for testing
-$VerbosePreference = "continue"
+$ZoomRooms = Get-ZoomRoomsObjects -SchemaName $SchemaName -ObjectTypeName $ObjectTypeName -ZoomApiKey $ZoomApiKey -ZoomApiSecret $ZoomApiSecret
 
-#region Variables
-$Global:InsightApiKey = "Place-Your-API-Key-Here"
+#region Insight
+$SchemaID = $(Get-InsightObjectSchema -InsightApiKey $InsightApiKey | Where-Object { $_.name -eq $SchemaName }).id
+$ObjectTypes = Get-InsightObjectTypes -ID $SchemaID -InsightApiKey $InsightApiKey
+$ZoomRoomObjectType = $ObjectTypes | Where-Object { $_.Name -like $ObjectTypename }
+$ZoomRoomAttributes = Get-InsightObjectTypeAttributes -ID $ZoomRoomObjectType.id -InsightApiKey $InsightApiKey
+$ZoomServerAttributes = Get-InsightObjectTypeAttributes -ID ( $ObjectTypes | Where-Object { $_.name -like 'Zoom Server' } ).id -InsightApiKey $InsightApiKey
+$AndroidAttributes = Get-InsightObjectTypeAttributes -ID ( $ObjectTypes | Where-Object { $_.name -like 'Android Controller' } ).id -InsightApiKey $InsightApiKey
+$iOSAttributes = Get-InsightObjectTypeAttributes -ID ( $ObjectTypes | Where-Object { $_.name -like 'iOS Controller' } ).id -InsightApiKey $InsightApiKey
 
-#Turn on script wide verbose for testing
-$VerbosePreference = "continue"
-
-#region Required-Modules
-function Test-Module ($m) {
-
-    # If module is imported say that and do nothing
-    if (Get-Module | Where-Object {$_.Name -eq $m}) {
-        write-host "Module $m is already imported."
-    }
-    else {
-
-        # If module is not imported, but available on disk then import
-        if (Get-Module -ListAvailable | Where-Object {$_.Name -eq $m}) {
-            Import-Module $m -Verbose
-        }
-        else {
-
-            # If module is not imported, not available on disk, but is in online gallery then install and import
-            if (Find-Module -Name $m | Where-Object {$_.Name -eq $m}) {
-                Install-Module -Name $m -Force -Verbose -Scope CurrentUser
-                Import-Module $m -Verbose
-            }
-            else {
-
-                # If module is not imported, not available and not in online gallery then abort
-                write-host "Module $m not imported, not available and not in online gallery, exiting."
-                EXIT 1
-            }
-        }
-    }
-}
-
-Test-Module PSInsight
-Test-Module Microsoft.PowerShell.SecretManagement
-#endregion Required-Modules
-
-#Import JSON attributes
-$SchemaJSON = Get-Content -Raw ".\Examples\Schema.json" | ConvertFrom-Json
-$ZoomRoomJSON = Get-Content -Raw ".\Examples\ZoomRoom_Attributes.json" | ConvertFrom-Json
-#endregion Variables
-
-# Schema setup
-try {
-    $HashArguments = @{
-        InsightApiKey = $InsightApiKey
-    }
-    $InsightObjectSchema = Get-InsightObjectSchema @HashArguments | Where { $_.name -like $SchemaJSON.ObjectSchemaName }
-    if (!($InsightObjectSchema)) {
-        throw 'Object Schema not found'
-        # Write-Verbose 'Object Type not found'
-    }
-    #Write-Verbose 'Object Schema not found'
-}
-catch {
-    $HashArguments = @{
-        Name = $SchemaJSON.ObjectSchemaName
-        ObjectSchemaKey = $SchemaJSON.ObjectSchemaKey
-        Description = $SchemaJSON.ObjectSchemaDescription
-        InsightApiKey = $InsightApiKey
-    }
-    $InsightObjectSchema = New-InsightObjectSchema @HashArguments
-    Write-Verbose 'Object Schema has been created'
-}
-
-# Create Zoom Room Object Type
-try {
-    $HashArguments = @{
-        objectschemaID = $InsightObjectSchema.id
-        InsightApiKey = $InsightApiKey
-    }
-    $ZoomRoomObjectType = Get-InsightObjectTypes @HashArguments | Where { $_.Name -like $ZoomRoomJSON.Name }
-    if (!($ZoomRoomObjectType)) {
-        throw "$($ZoomRoomJSON.Name) - Object not found"
-        Write-Verbose 'Object Type not found'
-    }
-}
-catch {
-    $HashArguments = @{
-        Name = $ZoomRoomJSON.Name
-        Description = $ZoomRoomJSON.Description
-        IconID = (Get-InsightIcons -InsightApiKey $InsightApiKey | Where { $_.name -like $ZoomRoomJSON.Icon }).id
-        objectSchemaId = $($InsightObjectSchema.id).ToString()
-        InsightApiKey = $InsightApiKey
-    }
-    $ZoomRoomObjectType = New-InsightObjectTypes @HashArguments
-    Write-Verbose 'Object Type has been created'
-}
-
-#Get existing Attributes
-$HashArguments = @{
-    ID = $ZoomRoomObjectType.id
-    InsightApiKey = $InsightApiKey
-}
-$ExistingZoomRoomAttributes = Get-InsightObjectTypeAttributes @HashArguments
-
-#Find missing Attributes
-$MissingZoomRoomAttributes = $ZoomRoomJSON.Attributes | Where-Object { $ExistingZoomRoomAttributes.name -notcontains $_.name }
-
-# Create any missing attributes
-foreach ($Attribute in $MissingZoomRoomAttributes) {
-    $HashArguments = @{
-        Name = $Attribute.name
-        Type = $Attribute.Type
-        DefaultType = $Attribute.DefaultType
-        ParentObjectTypeId = $ZoomRoomObjectType.id
-        InsightApiKey = $InsightApiKey
-    }
-    New-InsightObjectTypeAttributes @HashArguments
-    Write-Verbose "$($Attribute.name): Created"
-}
-
-# Create links
-<# if ($ZoomRoomJSON.Links) {
+# Build Insight Object
+foreach ($Room in $ZoomRooms) {
     
-    foreach ($link in $ZoomRoomJSON.Links) {
-        $HashArguments = @{
-            Name = $link.name
-            Type = $link.Type
-            TypeValue = $link.TypeValue
-            additionalValue = "SHOW_PROFILE"
-            Description = $link.description
-            parentObjectTypeId = $ObjectType.id
-            InsightApiKey = $InsightApiKey
+    $AttributeArray = @()
+
+    switch ($Room) {
+        { $room.name } {
+            $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $ZoomRoomAttributes | Where-Object { $_.name -like 'name' } ).id -objectAttributeValues $room.name)
         }
-        # additionalValue = 1 will set the link to type dependency
-        New-InsightObjectTypeAttributes @HashArguments
+        { $room.room_id } {
+            $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $ZoomRoomAttributes | Where-Object { $_.name -like 'zoom_id' } ).id -objectAttributeValues $room.room_id)
+        }
+        { $room.zoom_room_id } {
+            $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $ZoomRoomAttributes | Where-Object { $_.name -like 'zoom_room_id' } ).id -objectAttributeValues $room.zoom_room_id)
+        }
+        { $room.location_id } {
+            $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $ZoomRoomAttributes | Where-Object { $_.name -like 'location_id' } ).id -objectAttributeValues $room.location_id)
+        }
+        { $room.status } {
+            $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $ZoomRoomAttributes | Where-Object { $_.name -like 'status' } ).id -objectAttributeValues $room.status)
+        }
+        { $room.calendar_name } {
+            $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $ZoomRoomAttributes | Where-Object { $_.name -like 'calendar_name' } ).id -objectAttributeValues $room.calendar_name)
+        }
+        { $room.email } {
+            $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $ZoomRoomAttributes | Where-Object { $_.name -like 'email' } ).id -objectAttributeValues $room.email)
+        }
+        { $room.account_type } {
+            $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $ZoomRoomAttributes | Where-Object { $_.name -like 'account_type' } ).id -objectAttributeValues $room.account_type)
+        }
+        { $room.device_ip } {
+            $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $ZoomRoomAttributes | Where-Object { $_.name -like 'device_ip' } ).id -objectAttributeValues $room.device_ip)
+        }
+        { $room.camera } {
+            $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $ZoomRoomAttributes | Where-Object { $_.name -like 'camera' } ).id -objectAttributeValues $room.camera)
+        }
+        { $room.microphone } {
+            $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $ZoomRoomAttributes | Where-Object { $_.name -like 'microphone' } ).id -objectAttributeValues $room.microphone)
+        }
+        { $room.speaker } {
+            $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $ZoomRoomAttributes | Where-Object { $_.name -like 'speaker' } ).id -objectAttributeValues $room.speaker)
+        }
+        { $room.last_start_time } {
+            $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $ZoomRoomAttributes | Where-Object { $_.name -like 'last_start_time' } ).id -objectAttributeValues $room.last_start_time)
+        }
+        { $room.issues } {
+            $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $ZoomRoomAttributes | Where-Object { $_.name -like 'issues' } ).id -objectAttributeValues $([string]$room.issues))
+        }
+        { $room.health } {
+            $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $ZoomRoomAttributes | Where-Object { $_.name -like 'health' } ).id -objectAttributeValues $room.health)
+        }
+        { $room.floor } {
+            $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $ZoomRoomAttributes | Where-Object { $_.name -like 'floor' } ).id -objectAttributeValues $room.floor)
+        }
+        { $room.campus } {
+            $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $ZoomRoomAttributes | Where-Object { $_.name -like 'campus' } ).id -objectAttributeValues $room.campus)
+        }
+        { $room.city } {
+            $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $ZoomRoomAttributes | Where-Object { $_.name -like 'city' } ).id -objectAttributeValues $room.city)
+        }
+        { $room.state } {
+            $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $ZoomRoomAttributes | Where-Object { $_.name -like 'state' } ).id -objectAttributeValues $room.state)
+        }
+        { $room.country } {
+            $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $ZoomRoomAttributes | Where-Object { $_.name -like 'country' } ).id -objectAttributeValues $room.country)
+        }
     }
-} #>
 
-# Get the full list of attributes from the host again with all properties to be used elsewhere if needed.
-$HashArguments = @{
-    ID = $ZoomRoomObjectType.id
-    InsightApiKey = $InsightApiKey
-}
-$ZoomRoomAttributes = Get-InsightObjectTypeAttributes @HashArguments
-
-
-# Build Children
-$HashArguments = @{
-    objectschemaID = $InsightObjectSchema.id
-    InsightApiKey = $InsightApiKey
-}
-$existingObjectTypes = Get-InsightObjectTypes @HashArguments
-
-foreach ($child in $ZoomRoomJSON.Children) {
+    $RoomObject = New-InsightObject -objectTypeId $ZoomRoomObjectType.id -attributes $AttributeArray -InsightApiKey $InsightApiKey
     
-    if ($existingObjectTypes.name -notcontains $_.name ) {
-        $HashArguments = @{
-            name = $child.Name
-            description = $child.Description
-            parentObjectTypeId = $ZoomRoomObjectType.id
-            iconID = (Get-InsightIcons -InsightApiKey $InsightApiKey | Where { $_.name -like $child.Icon }).id
-            objectSchemaId = $($InsightObjectSchema.id).ToString()
-            InsightApiKey = $InsightApiKey
-        }
-        $ObjectType = New-InsightObjectTypes @HashArguments
+    # Create Device
+    foreach ($device in $room.Devices) {
 
-        #build attributes
-        foreach ($attribute in $child.Attributes) {
-            
-                $HashArguments = @{
-                    Name = $attribute.name
-                    Type = $attribute.Type
-                    DefaultType = $attribute.DefaultValue
-                    ParentObjectTypeId = $ObjectType.id
-                    InsightApiKey = $InsightApiKey
-                }
-                New-InsightObjectTypeAttributes @HashArguments
-            
-        }
-
-        if ($child.link) {
-            $HashArguments = @{
-                Name = $child.link.name
-                Type = $child.link.Type
-                TypeValue = $ZoomRoomObjectType.id
-                additionalValue = "1"
-                InsightApiKey = $InsightApiKey
-                parentObjectTypeId = $ObjectType.id
+        switch ($device.device_system) {
+            { $_ -like '*Win*' } { 
+                $deviceAttributes = $ZoomServerAttributes
+                $objectTypeID = ( $ObjectTypes | Where-Object { $_.name -like 'Zoom Server' } ).id
             }
-            # additionalValue = 1 will set the link to type dependency
-            New-InsightObjectTypeAttributes @HashArguments
+            { $_ -like '*Android*' } { 
+                $deviceAttributes = $AndroidAttributes
+                $objectTypeID = ( $ObjectTypes | Where-Object { $_.name -like 'Android Controller' } ).id
+            }
+            { $_ -like '*iPad*' } { 
+                $deviceAttributes = $iOSAttributes
+                $objectTypeID = ( $ObjectTypes | Where-Object { $_.name -like 'iOS Controller' } ).id
+            }
         }
-    }
-}
 
-#Turn off verbose after script runs. 
-$VerbosePreference = "silentlycontinue"
+        $AttributeArray = @()
+
+        switch ($device) {
+            { $device.device_name } {
+                $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $deviceAttributes | Where-Object { $_.name -like 'name' } ).id -objectAttributeValues $device.device_name)
+            }
+            { $device.device_type } {
+                $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $deviceAttributes | Where-Object { $_.name -like 'device_type' } ).id -objectAttributeValues $device.device_type)
+            }
+            { $device.app_version } {
+                $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $deviceAttributes | Where-Object { $_.name -like 'app_version' } ).id -objectAttributeValues $device.app_version)
+            }
+            { $device.app_target_version } {
+                $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $deviceAttributes | Where-Object { $_.name -like 'app_target_version' } ).id -objectAttributeValues $device.app_target_version)
+            }
+            { $device.device_system } {
+                $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $deviceAttributes | Where-Object { $_.name -like 'device_system' } ).id -objectAttributeValues $device.device_system)
+            }
+            { $device.status } {
+                $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $deviceAttributes | Where-Object { $_.name -like 'status' } ).id -objectAttributeValues $device.status)
+            }
+            { $device.parent_room } {
+                $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $deviceAttributes | Where-Object { $_.name -like 'parent_room' } ).id -objectAttributeValues $RoomObject.objectKey)
+            }
+        }
+
+        New-InsightObject -objectTypeId $objectTypeID -attributes $AttributeArray -InsightApiKey $InsightApiKey
+
+    }
+
+} 
+#endregion Insight

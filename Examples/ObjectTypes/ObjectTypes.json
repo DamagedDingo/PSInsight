@@ -5,7 +5,8 @@
     "Icon": "Workstation",
     "abstractObjectType": "True",
     "inherited": "True",
-    "Attributes": [{
+    "Attributes": [
+      {
         "name": "Hostname",
         "type": "Default",
         "DefaultType": "Text"
@@ -76,7 +77,8 @@
         "DefaultType": "Text"
       }
     ],
-    "Links": [{
+    "Links": [
+      {
         "name": "Business Owner",
         "type": "User",
         "DefaultType": "Text",
@@ -114,7 +116,8 @@
         "maximumCardinality": "-1"
       }
     ],
-    "ObjectTypes": [{
+    "ObjectTypes": [
+      {
         "Name": "Desktop",
         "Description": "Desktop Computers",
         "Icon": "Workstation",
@@ -127,11 +130,13 @@
         "Name": "Laptop",
         "Description": "Laptop Computers",
         "Icon": "Laptop",
-        "Attributes": [{
+        "Attributes": [
+          {
           "name": "battery status",
           "type": "Default",
           "DefaultType": "Text"
-        }],
+        }
+      ],
         "Link": {
 
         }
@@ -140,11 +145,13 @@
         "Name": "Tablet",
         "Description": "Tablet Computers",
         "Icon": "Tablet",
-        "Attributes": [{
+        "Attributes": [
+          {
           "name": "battery status",
           "type": "Default",
           "DefaultType": "Text"
-        }],
+        }
+      ],
         "Link": {
 
         }
@@ -157,7 +164,8 @@
     "Icon": "Root Server",
     "abstractObjectType": "True",
     "inherited": "True",
-    "Attributes": [{
+    "Attributes": [
+      {
         "name": "Hostname",
         "type": "Default",
         "DefaultType": "Text"
@@ -228,7 +236,8 @@
         "DefaultType": "Text"
       }
     ],
-    "Links": [{
+    "Links": [
+      {
         "name": "Business Owner",
         "type": "User",
         "DefaultType": "Text",
@@ -266,7 +275,8 @@
         "maximumCardinality": "-1"
       }
     ],
-    "ObjectTypes": [{
+    "ObjectTypes": [
+      {
         "Name": "Physical Server",
         "Description": "Servers",
         "Icon": "Individual Server",
@@ -381,7 +391,8 @@
         "DefaultType": "Text"
       }
     ],
-    "Links": [{
+    "Links": [
+      {
         "name": "Business Owner",
         "type": "User",
         "DefaultType": "Text",
@@ -419,11 +430,13 @@
         "maximumCardinality": "-1"
       }
     ],
-    "ObjectTypes": [{
+    "ObjectTypes": [
+      {
         "Name": "iOS Controller",
         "Description": "Zoom Room Controllers running iOS",
         "Icon": "iOS",
-        "Attributes": [{
+        "Attributes": [
+          {
             "name": "device_type",
             "type": "Default",
             "DefaultType": "Text"
@@ -454,7 +467,8 @@
         "Name": "Android Controller",
         "Description": "Zoom Room Controllers running Android",
         "Icon": "Android",
-        "Attributes": [{
+        "Attributes": [
+          {
             "name": "device_type",
             "type": "Default",
             "DefaultType": "Text"
@@ -485,7 +499,8 @@
         "Name": "Zoom Server",
         "Description": "Zoom Room Servers",
         "Icon": "Windows Client",
-        "Attributes": [{
+        "Attributes": [
+          {
             "name": "device_type",
             "type": "Default",
             "DefaultType": "Text"

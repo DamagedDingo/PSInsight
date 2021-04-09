@@ -10,6 +10,16 @@ Format as below (Requires the '### Added' as a header or task fails)
 ...- Update ReadMe.MD
 
 ## [Unreleased]
+### Added
+- Move -raw on get-content to stop positional errors
+- Added 'Get-MEMCMSQL_ExtendedInfo' to collect extra properties for computers pulled from SCCM
+- Added SiteServer.Json example
+- Updated Zoom Rooms Example.ps1
+- Updated Example_ObjectTypeBuilder.ps1
+- Updated Example_Schemabuilder.ps1
+- Added Convert-ChassisType.ps1
+- Added Get-ZoomRoomsObjects.ps1
+
 
 ## [1.11.20210408.0] - 2021-04-08
 ### Added
