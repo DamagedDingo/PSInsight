@@ -1,3 +1,4 @@
+#Used to check if modle is already installed and import if it is, else install.
 function Test-Module ($Module) {
 
     # If the module is already imported, notify and then do nothing

@@ -7,12 +7,7 @@
     "inherited": "True",
     "Attributes": [
       {
-        "name": "Hostname",
-        "type": "Default",
-        "DefaultType": "Text"
-      },
-      {
-        "name": "Serial",
+        "name": "SerialNumber",
         "type": "Default",
         "DefaultType": "Text"
       },
@@ -67,7 +62,17 @@
         "DefaultType": "Text"
       },
       {
-        "name": "ChassisTypes",
+        "name": "ChassisType",
+        "type": "Default",
+        "DefaultType": "Text"
+      },
+      {
+        "name": "ChassisID",
+        "type": "Default",
+        "DefaultType": "Text"
+      },
+      {
+        "name": "ChassisCategory",
         "type": "Default",
         "DefaultType": "Text"
       },
@@ -75,43 +80,75 @@
         "name": "Operating System",
         "type": "Default",
         "DefaultType": "Text"
+      },
+      {
+        "name": "OS Build",
+        "type": "Default",
+        "DefaultType": "Text"
       }
     ],
     "Links": [
       {
+        "name": "Device Owner",
+        "type": "User",
+        "typeValueMulti": [
+          "Application Access - Jira Service Desk - Customers",
+          "Application Access - Jira Service Desk - Technicians"
+        ],
+        "Description": "Owner of the Device"
+      },
+      {
         "name": "Business Owner",
         "type": "User",
-        "DefaultType": "Text",
+        "typeValueMulti": [
+          "Application Access - Jira Service Desk - Customers",
+          "Application Access - Jira Service Desk - Technicians"
+        ],
         "Description": "Business Owner is frequently a senior level staff such as department head"
       },
       {
         "name": "Service Owner",
         "type": "User",
-        "DefaultType": "Text",
+        "typeValueMulti": [
+          "Application Access - Jira Service Desk - Customers",
+          "Application Access - Jira Service Desk - Technicians"
+        ],
         "Description": "Service Owner is frequently a director of the organization that owns the service."
       },
       {
         "name": "Service Manager",
         "type": "User",
-        "DefaultType": "Text",
+        "typeValueMulti": [
+          "Application Access - Jira Service Desk - Customers",
+          "Application Access - Jira Service Desk - Technicians"
+        ],
         "Description": "Service Manager is frequently a Manager in the organization that owns the service."
       },
       {
         "name": "Technical Operations Owner",
         "type": "User",
-        "DefaultType": "Text",
+        "typeValueMulti": [
+          "Application Access - Jira Service Desk - Customers",
+          "Application Access - Jira Service Desk - Technicians"
+        ],
         "Description": "Technical Operations Owner's sole focus is the support and maintenance of the underlying service technology."
       },
       {
         "name": "Business Operations Owner",
         "type": "User",
-        "DefaultType": "Text",
+        "typeValueMulti": [
+          "Application Access - Jira Service Desk - Customers",
+          "Application Access - Jira Service Desk - Technicians"
+        ],
         "Description": "Business Operations Owner provides support to end-users of the service. (Generally Service Desk)"
       },
       {
         "name": "Subscribed Stakeholders",
         "type": "User",
-        "DefaultType": "Text",
+        "typeValueMulti": [
+          "Application Access - Jira Service Desk - Customers",
+          "Application Access - Jira Service Desk - Technicians"
+        ],
         "Description": "Enter email address of users who would like to be notified about the status of this service.",
         "maximumCardinality": "-1"
       }
@@ -166,12 +203,7 @@
     "inherited": "True",
     "Attributes": [
       {
-        "name": "Hostname",
-        "type": "Default",
-        "DefaultType": "Text"
-      },
-      {
-        "name": "Serial",
+        "name": "SerialNumber",
         "type": "Default",
         "DefaultType": "Text"
       },
@@ -226,12 +258,27 @@
         "DefaultType": "Text"
       },
       {
-        "name": "ChassisTypes",
+        "name": "ChassisType",
+        "type": "Default",
+        "DefaultType": "Text"
+      },
+      {
+        "name": "ChassisID",
+        "type": "Default",
+        "DefaultType": "Text"
+      },
+      {
+        "name": "ChassisCategory",
         "type": "Default",
         "DefaultType": "Text"
       },
       {
         "name": "Operating System",
+        "type": "Default",
+        "DefaultType": "Text"
+      },
+      {
+        "name": "OS Build",
         "type": "Default",
         "DefaultType": "Text"
       }
@@ -240,37 +287,55 @@
       {
         "name": "Business Owner",
         "type": "User",
-        "DefaultType": "Text",
+        "typeValueMulti": [
+          "Application Access - Jira Service Desk - Customers",
+          "Application Access - Jira Service Desk - Technicians"
+        ],
         "Description": "Business Owner is frequently a senior level staff such as department head"
       },
       {
         "name": "Service Owner",
         "type": "User",
-        "DefaultType": "Text",
+        "typeValueMulti": [
+          "Application Access - Jira Service Desk - Customers",
+          "Application Access - Jira Service Desk - Technicians"
+        ],
         "Description": "Service Owner is frequently a director of the organization that owns the service."
       },
       {
         "name": "Service Manager",
         "type": "User",
-        "DefaultType": "Text",
+        "typeValueMulti": [
+          "Application Access - Jira Service Desk - Customers",
+          "Application Access - Jira Service Desk - Technicians"
+        ],
         "Description": "Service Manager is frequently a Manager in the organization that owns the service."
       },
       {
         "name": "Technical Operations Owner",
         "type": "User",
-        "DefaultType": "Text",
+        "typeValueMulti": [
+          "Application Access - Jira Service Desk - Customers",
+          "Application Access - Jira Service Desk - Technicians"
+        ],
         "Description": "Technical Operations Owner's sole focus is the support and maintenance of the underlying service technology."
       },
       {
         "name": "Business Operations Owner",
         "type": "User",
-        "DefaultType": "Text",
+        "typeValueMulti": [
+          "Application Access - Jira Service Desk - Customers",
+          "Application Access - Jira Service Desk - Technicians"
+        ],
         "Description": "Business Operations Owner provides support to end-users of the service. (Generally Service Desk)"
       },
       {
         "name": "Subscribed Stakeholders",
         "type": "User",
-        "DefaultType": "Text",
+        "typeValueMulti": [
+          "Application Access - Jira Service Desk - Customers",
+          "Application Access - Jira Service Desk - Technicians"
+        ],
         "Description": "Enter email address of users who would like to be notified about the status of this service.",
         "maximumCardinality": "-1"
       }
@@ -300,7 +365,8 @@
     "Name": "Zoom Room",
     "Description": "Zoom Room Information",
     "Icon": "AV Receiver",
-    "Attributes": [{
+    "Attributes": [
+      {
         "name": "zoom_id",
         "type": "Default",
         "DefaultType": "Text"
@@ -395,37 +461,55 @@
       {
         "name": "Business Owner",
         "type": "User",
-        "DefaultType": "Text",
+        "typeValueMulti": [
+          "Application Access - Jira Service Desk - Customers",
+          "Application Access - Jira Service Desk - Technicians"
+        ],
         "Description": "Business Owner is frequently a senior level staff such as department head"
       },
       {
         "name": "Service Owner",
         "type": "User",
-        "DefaultType": "Text",
+        "typeValueMulti": [
+          "Application Access - Jira Service Desk - Customers",
+          "Application Access - Jira Service Desk - Technicians"
+        ],
         "Description": "Service Owner is frequently a director of the organization that owns the service."
       },
       {
         "name": "Service Manager",
         "type": "User",
-        "DefaultType": "Text",
+        "typeValueMulti": [
+          "Application Access - Jira Service Desk - Customers",
+          "Application Access - Jira Service Desk - Technicians"
+        ],
         "Description": "Service Manager is frequently a Manager in the organization that owns the service."
       },
       {
         "name": "Technical Operations Owner",
         "type": "User",
-        "DefaultType": "Text",
+        "typeValueMulti": [
+          "Application Access - Jira Service Desk - Customers",
+          "Application Access - Jira Service Desk - Technicians"
+        ],
         "Description": "Technical Operations Owner's sole focus is the support and maintenance of the underlying service technology."
       },
       {
         "name": "Business Operations Owner",
         "type": "User",
-        "DefaultType": "Text",
+        "typeValueMulti": [
+          "Application Access - Jira Service Desk - Customers",
+          "Application Access - Jira Service Desk - Technicians"
+        ],
         "Description": "Business Operations Owner provides support to end-users of the service. (Generally Service Desk)"
       },
       {
         "name": "Subscribed Stakeholders",
         "type": "User",
-        "DefaultType": "Text",
+        "typeValueMulti": [
+          "Application Access - Jira Service Desk - Customers",
+          "Application Access - Jira Service Desk - Technicians"
+        ],
         "Description": "Enter email address of users who would like to be notified about the status of this service.",
         "maximumCardinality": "-1"
       }

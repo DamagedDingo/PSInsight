@@ -67,13 +67,14 @@ function Get-MEMCMSQL_ExtendedInfo {
             $Device | Add-Member -MemberType NoteProperty -Name 'v_GS_X86_PC_MEMORY' -Value $($v_GS_X86_PC_MEMORY | Where { $_.ResourceID -like $Device.ResourceID }) -Force
         
             if ($Device.v_GS_SYSTEM_ENCLOSURE.ChassisTypes0) {
-                $ChassisName = Convert-ChassisType $Device.v_GS_SYSTEM_ENCLOSURE.ChassisTypes0
+                $Chassis = Convert-ChassisType $Device.v_GS_SYSTEM_ENCLOSURE.ChassisTypes0
             }
             
             $Object = [PSCustomObject]@{
                 "Hostname" = $Device.Name
                 "ResourceID" = $Device.ResourceID
                 "Domain" = $Device.Domain
+                "SerialNumber" = $Device.SerialNumber
                 "IsVirtualMachine" = $Device.IsVirtualMachine
                 "LastHardwareScan" = $Device.LastHardwareScan
                 "LastLogonUser" = $Device.LastLogonUser
@@ -86,9 +87,13 @@ function Get-MEMCMSQL_ExtendedInfo {
                 "TotalPhysicalMemory" = $Device.v_GS_COMPUTER_SYSTEM.TotalPhysicalMemory0
         
                 # v_GS_SYSTEM_ENCLOSURE
-                "ChassisTypes" = $ChassisName
+                "ChassisType" = $Chassis.Type
+                "ChassisTypeID" = $Chassis.ID
+                "ChassisCategory" = $Chassis.Category
         
                 # v_GS_OPERATING_SYSTEM  
+                "Operating System" = $Device.DeviceOS
+                "OS Build" = $Device.DeviceOSbuild
                 "Caption" = $Device.v_GS_OPERATING_SYSTEM.Caption0
                 "CSDVersion" = $Device.v_GS_OPERATING_SYSTEM.CSDVersion0
                 "InstallDate" = $Device.v_GS_OPERATING_SYSTEM.InstallDate0

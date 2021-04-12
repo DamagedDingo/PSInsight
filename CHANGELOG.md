@@ -10,6 +10,11 @@ Format as below (Requires the '### Added' as a header or task fails)
 ...- Update ReadMe.MD
 
 ## [Unreleased]
+### Added
+- Update Convert-ChassisType to contain catagory as well as ID.
+- Update ObjectTypes.json - Remove Hostname, Update SerialName field, add links
+- Connect-MEMCM updated
+- Update Get-MEMCMSQL_ExtendedInfo - New Chasis Info, SerialName
 
 ## [1.12.20210409.0] - 2021-04-09
 ### Added
