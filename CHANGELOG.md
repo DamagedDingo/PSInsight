@@ -10,6 +10,8 @@ Format as below (Requires the '### Added' as a header or task fails)
 ...- Update ReadMe.MD
 
 ## [Unreleased]
+
+## [1.13.20210412.0] - 2021-04-12
 ### Added
 - Update Convert-ChassisType to contain catagory as well as ID.
 - Update ObjectTypes.json - Remove Hostname, Update SerialName field, add links
@@ -83,7 +85,8 @@ Format as below (Requires the '### Added' as a header or task fails)
 
 ## [1.0.0] - 2020-10-15
 ### Added
-- Added to start versioning[Unreleased]: https://github.com/DamagedDingo/PSInsight/compare/1.12.20210409.0..HEAD
+- Added to start versioning[Unreleased]: https://github.com/DamagedDingo/PSInsight/compare/1.13.20210412.0..HEAD
+[1.13.20210412.0]: https://github.com/DamagedDingo/PSInsight/compare/1.12.20210409.0..1.13.20210412.0
 [1.12.20210409.0]: https://github.com/DamagedDingo/PSInsight/compare/1.11.20210408.0..1.12.20210409.0
 [1.11.20210408.0]: https://github.com/DamagedDingo/PSInsight/compare/1.10.20210408.0..1.11.20210408.0
 [1.10.20210408.0]: https://github.com/DamagedDingo/PSInsight/compare/1.9.20210408.0..1.10.20210408.0
