@@ -313,6 +313,7 @@ New-InsightObjectTypeAttributes -Name "Link to Parent" -Type Object -typeValue 2
             }
             "User" { 
                 $RequestBody.Add("type", $objectTypeID)
+                $RequestBody.Add("typeValue", $PSBoundParameters["typeValue"])
                 $RequestBody.Add("typeValueMulti", $PSBoundParameters["typeValueMulti"])
                 $RequestBody.Add("additionalValue", $PSBoundParameters["additionalValue"])
             }

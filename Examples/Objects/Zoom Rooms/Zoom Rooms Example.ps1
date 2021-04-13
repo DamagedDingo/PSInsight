@@ -9,6 +9,39 @@ $ZoomRooms = Get-ZoomRoomsObjects -SchemaName $SchemaName -ObjectTypeName $Objec
 #region Insight
 $SchemaID = $(Get-InsightObjectSchema -InsightApiKey $InsightApiKey | Where-Object { $_.name -eq $SchemaName }).id
 $ObjectTypes = Get-InsightObjectTypes -ID $SchemaID -InsightApiKey $InsightApiKey
+
+# Build links (Can't do it in JSON as don't know what the ID's are yet)
+$HashArguments = @{
+    Name          = "Parent_Room"
+    Type          = "Object"
+    ParentObjectTypeId = $($ObjectTypes | Where-Object { $_.name -like "iOS Controller" }).id
+    typeValue = $($ObjectTypes | Where-Object { $_.name -like "Zoom Room" }).id
+    additionalValue = 1
+    InsightApiKey = $InsightApiKey
+}
+New-InsightObjectTypeAttributes @HashArguments 
+
+$HashArguments = @{
+    Name          = "Parent_Room"
+    Type          = "Object"
+    ParentObjectTypeId = $($ObjectTypes | Where-Object { $_.name -like "Android Controller" }).id
+    typeValue = $($ObjectTypes | Where-Object { $_.name -like "Zoom Room" }).id
+    additionalValue = 1
+    InsightApiKey = $InsightApiKey
+}
+New-InsightObjectTypeAttributes @HashArguments
+
+$HashArguments = @{
+    Name          = "Parent_Room"
+    Type          = "Object"
+    ParentObjectTypeId = $($ObjectTypes | Where-Object { $_.name -like "Zoom Server" }).id
+    typeValue = $($ObjectTypes | Where-Object { $_.name -like "Zoom Room" }).id
+    additionalValue = 1
+    InsightApiKey = $InsightApiKey
+}
+New-InsightObjectTypeAttributes @HashArguments
+
+
 $ZoomRoomObjectType = $ObjectTypes | Where-Object { $_.Name -like $ObjectTypename }
 $ZoomRoomAttributes = Get-InsightObjectTypeAttributes -ID $ZoomRoomObjectType.id -InsightApiKey $InsightApiKey
 $ZoomServerAttributes = Get-InsightObjectTypeAttributes -ID ( $ObjectTypes | Where-Object { $_.name -like 'Zoom Server' } ).id -InsightApiKey $InsightApiKey
@@ -17,7 +50,7 @@ $iOSAttributes = Get-InsightObjectTypeAttributes -ID ( $ObjectTypes | Where-Obje
 
 # Build Insight Object
 foreach ($Room in $ZoomRooms) {
-    
+
     $AttributeArray = @()
 
     switch ($Room) {
@@ -124,10 +157,8 @@ foreach ($Room in $ZoomRooms) {
             { $device.status } {
                 $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $deviceAttributes | Where-Object { $_.name -like 'status' } ).id -objectAttributeValues $device.status)
             }
-            { $device.parent_room } {
-                $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $deviceAttributes | Where-Object { $_.name -like 'parent_room' } ).id -objectAttributeValues $RoomObject.objectKey)
-            }
         }
+        $AttributeArray += $(New-InsightObjectAttribute -objectTypeAttributeId ( $deviceAttributes | Where-Object { $_.name -like 'parent_room' } ).id -objectAttributeValues $RoomObject.objectKey)
 
         New-InsightObject -objectTypeId $objectTypeID -attributes $AttributeArray -InsightApiKey $InsightApiKey
 

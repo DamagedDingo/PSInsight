@@ -10,6 +10,11 @@ Format as below (Requires the '### Added' as a header or task fails)
 ...- Update ReadMe.MD
 
 ## [Unreleased]
+### Added
+- Fixed bug in zoom room builder where parent_room was not created or populated. 
+- Added field 'typeValue' for type 'Object' in New-InsightObjectTypeAttributes
+- Added Find-InsightObjects
+- Removed Links from JSON and Build-ObjectType
 
 ## [1.13.20210412.0] - 2021-04-12
 ### Added
@@ -17,6 +22,7 @@ Format as below (Requires the '### Added' as a header or task fails)
 - Update ObjectTypes.json - Remove Hostname, Update SerialName field, add links
 - Connect-MEMCM updated
 - Update Get-MEMCMSQL_ExtendedInfo - New Chasis Info, SerialName
+- Statuses examples and builder
 
 ## [1.12.20210409.0] - 2021-04-09
 ### Added

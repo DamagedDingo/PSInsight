@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Assigned",
+        "description": "Assigned to employee",
+        "category": "Active"
+    },
+    {
+        "name": "Unassigned",
+        "description": "Spare laptop to be used for a employee",
+        "category": "Pending"
+    },
+    {
+        "name": "In Repair",
+        "description": "With service desk for repair",
+        "category": "Active"
+    },
+    {
+        "name": "Disposed",
+        "description": "Device recycled",
+        "category": "Inactive"
+    },
+    {
+        "name": "Loan",
+        "description": "Avalible for Loan",
+        "category": "Pending"
+    },
+    {
+        "name": "On Loan",
+        "description": "Currently loaned to employee",
+        "category": "Active"
+    },
+    {
+        "name": "Lost",
+        "description": "Device has been lost",
+        "category": "Inactive"
+    }
+]
