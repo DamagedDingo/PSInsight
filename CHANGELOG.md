@@ -10,6 +10,8 @@ Format as below (Requires the '### Added' as a header or task fails)
 ...- Update ReadMe.MD
 
 ## [Unreleased]
+
+## [1.14.20210413.0] - 2021-04-13
 ### Added
 - Fixed bug in zoom room builder where parent_room was not created or populated. 
 - Added field 'typeValue' for type 'Object' in New-InsightObjectTypeAttributes
@@ -91,7 +93,8 @@ Format as below (Requires the '### Added' as a header or task fails)
 
 ## [1.0.0] - 2020-10-15
 ### Added
-- Added to start versioning[Unreleased]: https://github.com/DamagedDingo/PSInsight/compare/1.13.20210412.0..HEAD
+- Added to start versioning[Unreleased]: https://github.com/DamagedDingo/PSInsight/compare/1.14.20210413.0..HEAD
+[1.14.20210413.0]: https://github.com/DamagedDingo/PSInsight/compare/1.13.20210412.0..1.14.20210413.0
 [1.13.20210412.0]: https://github.com/DamagedDingo/PSInsight/compare/1.12.20210409.0..1.13.20210412.0
 [1.12.20210409.0]: https://github.com/DamagedDingo/PSInsight/compare/1.11.20210408.0..1.12.20210409.0
 [1.11.20210408.0]: https://github.com/DamagedDingo/PSInsight/compare/1.10.20210408.0..1.11.20210408.0
