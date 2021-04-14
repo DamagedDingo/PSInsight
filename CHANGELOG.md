@@ -10,6 +10,8 @@ Format as below (Requires the '### Added' as a header or task fails)
 ...- Update ReadMe.MD
 
 ## [Unreleased]
+
+## [1.15.20210414.0] - 2021-04-14
 ### Added
 - Build-ObjectType Add description parameter
 - New-InsightObjectTypeAttributes Add description parameter
@@ -97,7 +99,8 @@ Format as below (Requires the '### Added' as a header or task fails)
 
 ## [1.0.0] - 2020-10-15
 ### Added
-- Added to start versioning[Unreleased]: https://github.com/DamagedDingo/PSInsight/compare/1.14.20210413.0..HEAD
+- Added to start versioning[Unreleased]: https://github.com/DamagedDingo/PSInsight/compare/1.15.20210414.0..HEAD
+[1.15.20210414.0]: https://github.com/DamagedDingo/PSInsight/compare/1.14.20210413.0..1.15.20210414.0
 [1.14.20210413.0]: https://github.com/DamagedDingo/PSInsight/compare/1.13.20210412.0..1.14.20210413.0
 [1.13.20210412.0]: https://github.com/DamagedDingo/PSInsight/compare/1.12.20210409.0..1.13.20210412.0
 [1.12.20210409.0]: https://github.com/DamagedDingo/PSInsight/compare/1.11.20210408.0..1.12.20210409.0
