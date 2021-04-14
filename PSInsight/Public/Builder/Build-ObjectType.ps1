@@ -75,6 +75,9 @@ function Build-ObjectType {
                     InsightApiKey = $InsightApiKey
                 }
                 switch ($Attribute) {
+                    { $Attribute.Description } {
+                        $HashArguments.Add('Description', $Attribute.Description) 
+                    }
                     { $Attribute.DefaultType } {
                         $HashArguments.Add('DefaultType', $Attribute.DefaultType) 
                     }

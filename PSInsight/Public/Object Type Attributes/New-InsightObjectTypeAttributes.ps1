@@ -10,6 +10,9 @@ Resource to create an object type attribute in Insight.
 .PARAMETER Name
 The name.
 
+.PARAMETER Description
+The Description for the Attribute.
+
 .PARAMETER Type
 The type. ["Default", "Object", "User", "Confluence", "Group", "Status"]
 
@@ -95,6 +98,10 @@ New-InsightObjectTypeAttributes -Name "Link to Parent" -Type Object -typeValue 2
         [ValidateNotNullOrEmpty()]
         [Parameter(Mandatory = $true)]
         [string]$Name,
+
+        [ValidateNotNullOrEmpty()]
+        [Parameter(Mandatory = $false)]
+        [string]$Description,
 
         [Parameter(Mandatory = $true)]
         [ValidateSet("Default", "Object", "User", "Confluence", "Group", "Status")]
@@ -348,6 +355,9 @@ New-InsightObjectTypeAttributes -Name "Link to Parent" -Type Object -typeValue 2
         # Add all the aditional Attributes. 
         if ($uniqueAttribute) {
             $RequestBody.Add("uniqueAttribute", $UniqueAttribute)
+        }
+        if ($Description) {
+            $RequestBody.Add("Description", $Description)
         }
         if ($PSBoundParameters["minimumCardinality"]) {
             $RequestBody.Add("minimumCardinality", $PSBoundParameters["minimumCardinality"])
