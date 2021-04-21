@@ -52,13 +52,10 @@ $array = @($1,$2) # For use with New-InsightObject
             'objectTypeAttributeId' = $objectTypeAttributeId
             'objectAttributeValues'   = @($values)
             }
+    }
 
-}
-    
     end {
-                
         Write-Output $Attribute
-
         }
 }
 

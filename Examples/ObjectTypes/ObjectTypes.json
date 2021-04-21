@@ -7,6 +7,10 @@
     "inherited": "True",
     "Attributes": [
       {
+        "name": "status",
+        "type": "Status"
+      },
+      {
         "name": "SerialNumber",
         "type": "Default",
         "DefaultType": "Text"

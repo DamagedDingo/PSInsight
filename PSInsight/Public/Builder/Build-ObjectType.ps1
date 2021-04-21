@@ -48,8 +48,6 @@ function Build-ObjectType {
                     $HashArguments.Add('parentObjectTypeId', $ObjectType.parentObjectTypeId) 
                 }
             }
-            $HashArguments
-                
             $ObjectTypeParameters = New-InsightObjectTypes @HashArguments
             Write-Verbose 'Object Type has been created'
         }
@@ -121,23 +119,18 @@ function Build-ObjectType {
                         $HashArguments.Add('options', $Attribute.options) 
                     }
                 }
-        
                 New-InsightObjectTypeAttributes @HashArguments
                 Write-Verbose "$($Attribute.name): Created"
             }
-    
         } 
 
         if ($ObjectType.ObjectTypes) {
             # add the parent object type id so that next loop is for a child
             foreach ($child in $ObjectType.ObjectTypes.psobject.Properties) {
                 $child.value | Add-Member -NotePropertyName 'parentObjectTypeId' -NotePropertyValue $ObjectTypeParameters.id
-                
             }
             #call itself for recursion 
             Build-ObjectType -ObjectArray $ObjectType.ObjectTypes -SchemaID $SchemaID -InsightApiKey $InsightApiKey
         }
-
     }
-    
 }

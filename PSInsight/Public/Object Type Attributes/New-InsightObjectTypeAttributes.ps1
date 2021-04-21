@@ -384,7 +384,7 @@ New-InsightObjectTypeAttributes -Name "Link to Parent" -Type Object -typeValue 2
             $RequestBody.Add("options", $PSBoundParameters["options"])
         }
         
-        $RequestBody = ConvertTo-Json $RequestBody -Depth 1
+        $RequestBody = ConvertTo-Json $RequestBody -Depth 10
     }
     
     end {

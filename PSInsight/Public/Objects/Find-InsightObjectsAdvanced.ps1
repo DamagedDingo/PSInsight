@@ -92,6 +92,9 @@ Find-InsightObjects -ObjectTypeID "295" -limit 100 -InsightApiKey $InsightApiKey
         [Parameter(Mandatory = $false)]
         [int[]]$attributesToDisplay,
 
+        [Parameter(Mandatory = $false)]
+        [switch]$ShowJSON,
+
         [ValidateNotNullOrEmpty()]
         [Alias('ApiKey')]
         [string]$InsightApiKey = $InsightApiKey
@@ -130,11 +133,16 @@ Find-InsightObjects -ObjectTypeID "295" -limit 100 -InsightApiKey $InsightApiKey
             $RequestBody.Add("includeAttributes",$includeAttributes )
         }
         if ($attributesToDisplay) {
-            $list = @($attributesToDisplay)
-            $RequestBody.Add("iql",$list )
+            $list = @{"attributesToDisplayIds" = @($attributesToDisplay)}
+            $RequestBody.Add("attributesToDisplay",$list )
         }
         
         $RequestBody = ConvertTo-Json $RequestBody -Depth 20
+
+        if ($ShowJSON -eq $true) {
+            Write-Output $RequestBody
+            break
+        }
 
     }
     

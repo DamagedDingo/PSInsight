@@ -10,6 +10,14 @@ Format as below (Requires the '### Added' as a header or task fails)
 ...- Update ReadMe.MD
 
 ## [Unreleased]
+### Added
+- Find-InsightObjectsAdvanced bug fix for attributesToDisplay (Still seems to be bug at Insight end)
+- Find-InsightObjectsAdvanced Added ShowJSON switch that will show json and break out of function. Good for troubleshooting
+- ObjectTypes.json updated to include status field.
+- Connect-MEMCM cleaned up and removed unwanted code
+- New-InsightObjectTypeAttributes updated JSON depth.. descriptions still not working logged ticket to Insight
+- New-InsightObjectAttribute Removed whitespace
+- Build-ObjectType Removed whitespace and test code.
 
 ## [1.15.20210414.0] - 2021-04-14
 ### Added
@@ -18,7 +26,7 @@ Format as below (Requires the '### Added' as a header or task fails)
 
 ## [1.14.20210413.0] - 2021-04-13
 ### Added
-- Fixed bug in zoom room builder where parent_room was not created or populated. 
+- Fixed bug in zoom room builder where parent_room was not created or populated.
 - Added field 'typeValue' for type 'Object' in New-InsightObjectTypeAttributes
 - Added Find-InsightObjects
 - Added Find-InsightObjectsAdvanced
