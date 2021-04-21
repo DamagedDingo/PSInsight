@@ -10,6 +10,8 @@ Format as below (Requires the '### Added' as a header or task fails)
 ...- Update ReadMe.MD
 
 ## [Unreleased]
+
+## [1.16.20210421.0] - 2021-04-21
 ### Added
 - Find-InsightObjectsAdvanced bug fix for attributesToDisplay (Still seems to be bug at Insight end)
 - Find-InsightObjectsAdvanced Added ShowJSON switch that will show json and break out of function. Good for troubleshooting
@@ -107,7 +109,8 @@ Format as below (Requires the '### Added' as a header or task fails)
 
 ## [1.0.0] - 2020-10-15
 ### Added
-- Added to start versioning[Unreleased]: https://github.com/DamagedDingo/PSInsight/compare/1.15.20210414.0..HEAD
+- Added to start versioning[Unreleased]: https://github.com/DamagedDingo/PSInsight/compare/1.16.20210421.0..HEAD
+[1.16.20210421.0]: https://github.com/DamagedDingo/PSInsight/compare/1.15.20210414.0..1.16.20210421.0
 [1.15.20210414.0]: https://github.com/DamagedDingo/PSInsight/compare/1.14.20210413.0..1.15.20210414.0
 [1.14.20210413.0]: https://github.com/DamagedDingo/PSInsight/compare/1.13.20210412.0..1.14.20210413.0
 [1.13.20210412.0]: https://github.com/DamagedDingo/PSInsight/compare/1.12.20210409.0..1.13.20210412.0
