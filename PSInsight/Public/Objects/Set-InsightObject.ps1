@@ -34,6 +34,9 @@ https://documentation.mindville.com/display/INSCLOUD/REST+API+-+Object+schema
         [Parameter(Mandatory = $true)]
         [array]$Attributes,
 
+        [Parameter(Mandatory = $false)]
+        [switch]$ShowJSON,
+
         [ValidateNotNullOrEmpty()]
         [Alias('ApiKey')]
         [string]$InsightApiKey = $InsightApiKey
@@ -51,10 +54,12 @@ https://documentation.mindville.com/display/INSCLOUD/REST+API+-+Object+schema
             'objectTypeId' = $objectTypeId
             'attributes'   = @($attributes)
             }
-            
         
-        $RequestBody = ConvertTo-Json $RequestBody -Depth 20
-        $RequestBody
+            $RequestBody = ConvertTo-Json $RequestBody -Depth 20
+
+            if ($ShowJSON -eq $true) {
+                Write-Output $RequestBody
+            }
     }
     
     end {

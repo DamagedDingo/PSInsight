@@ -10,6 +10,8 @@ Format as below (Requires the '### Added' as a header or task fails)
 ...- Update ReadMe.MD
 
 ## [Unreleased]
+### Added
+- Updated Set-Insight Object to add -ShowJSON function
 
 ## [1.16.20210421.0] - 2021-04-21
 ### Added
