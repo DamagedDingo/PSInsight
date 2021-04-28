@@ -3,10 +3,6 @@ function Get-ZoomRoomsObjects {
     param (
         [ValidateNotNullOrEmpty()]
         [Parameter(Mandatory = $true)]
-        [string]$SchemaName,
-
-        [ValidateNotNullOrEmpty()]
-        [Parameter(Mandatory = $true)]
         [string]$ObjectTypeName,
 
         [ValidateNotNullOrEmpty()]

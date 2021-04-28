@@ -10,6 +10,9 @@ Format as below (Requires the '### Added' as a header or task fails)
 ...- Update ReadMe.MD
 
 ## [Unreleased]
+### Added
+- Remove Schema name from 'Get-ZoomRoomsObjects'
+- Update 'Set-InsightObject'
 
 ## [1.17.20210422.0] - 2021-04-22
 ### Added

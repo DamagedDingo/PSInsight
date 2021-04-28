@@ -31,6 +31,10 @@ https://documentation.mindville.com/display/INSCLOUD/REST+API+-+Object+schema
         [int]$ID,
 
         [ValidateNotNullOrEmpty()]
+        [Parameter(Mandatory = $false)]
+        [int]$objectTypeId,
+
+        [ValidateNotNullOrEmpty()]
         [Parameter(Mandatory = $true)]
         [array]$Attributes,
 
@@ -50,15 +54,23 @@ https://documentation.mindville.com/display/INSCLOUD/REST+API+-+Object+schema
     process {
         $Request = [System.UriBuilder]"https://insight-api.riada.io/rest/insight/1.0/object/$($ID)"
 
-        $RequestBody = @{
-            'objectTypeId' = $objectTypeId
-            'attributes'   = @($attributes)
-            }
+        if ($objectTypeId) {
+            $RequestBody = @{
+                'objectTypeId' = $objectTypeId
+                'attributes'   = @($attributes)
+                }
+        }
+        else {
+            $RequestBody = @{
+                'attributes'   = @($attributes)
+                }
+        }
         
             $RequestBody = ConvertTo-Json $RequestBody -Depth 20
 
             if ($ShowJSON -eq $true) {
                 Write-Output $RequestBody
+                break
             }
     }
     
