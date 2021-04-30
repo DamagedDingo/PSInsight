@@ -20,7 +20,7 @@ function Get-ZoomRoomsObjects {
     Test-Module "Join-Object"
 
     $ZoomRoomIDs = Get-ZoomRooms -PageSize 300
-    $DashboardZoomRooms = Get-DashboardZoomRooms -PageSize 300
+    $DashboardZoomRooms = Get-ZoomRoomsDashboard -PageSize 300
     $ZoomRoomLocations = Get-ZoomRoomLocations -page_size 300
 
     function Get-SingleZoomRoomLocation {

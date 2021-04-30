@@ -10,6 +10,8 @@ Format as below (Requires the '### Added' as a header or task fails)
 ...- Update ReadMe.MD
 
 ## [Unreleased]
+### Added
+- Update cmdlet name Get-ZoomRoomsDashboard
 
 ## [1.18.20210428.0] - 2021-04-28
 ### Added
