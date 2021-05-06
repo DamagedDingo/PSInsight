@@ -10,6 +10,9 @@ Format as below (Requires the '### Added' as a header or task fails)
 ...- Update ReadMe.MD
 
 ## [Unreleased]
+### Added
+- Update Test-Module
+- Add Join-Object
 
 ## [1.19.20210430.0] - 2021-04-30
 ### Added
