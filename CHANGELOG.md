@@ -10,6 +10,8 @@ Format as below (Requires the '### Added' as a header or task fails)
 ...- Update ReadMe.MD
 
 ## [Unreleased]
+
+## [1.20.20210506.0] - 2021-05-06
 ### Added
 - Update Test-Module
 - Add Join-Object
@@ -125,7 +127,8 @@ Format as below (Requires the '### Added' as a header or task fails)
 
 ## [1.0.0] - 2020-10-15
 ### Added
-- Added to start versioning[Unreleased]: https://github.com/DamagedDingo/PSInsight/compare/1.19.20210430.0..HEAD
+- Added to start versioning[Unreleased]: https://github.com/DamagedDingo/PSInsight/compare/1.20.20210506.0..HEAD
+[1.20.20210506.0]: https://github.com/DamagedDingo/PSInsight/compare/1.19.20210430.0..1.20.20210506.0
 [1.19.20210430.0]: https://github.com/DamagedDingo/PSInsight/compare/1.18.20210428.0..1.19.20210430.0
 [1.18.20210428.0]: https://github.com/DamagedDingo/PSInsight/compare/1.17.20210422.0..1.18.20210428.0
 [1.17.20210422.0]: https://github.com/DamagedDingo/PSInsight/compare/1.16.20210421.0..1.17.20210422.0
