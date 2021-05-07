@@ -10,11 +10,9 @@ Format as below (Requires the '### Added' as a header or task fails)
 ...- Update ReadMe.MD
 
 ## [Unreleased]
-
-## [1.21.20210507.0] - 2021-05-07
 ### Added
 - Convert-ChassisType ID to accept [string]
-- Updated Get-MEMCMSQL_ExtendedInfo to accept [string] - SCCM stores as string not int
+- Updated Get-MEMCMSQL_ExtendedInfo to accept [string] - SCCM stores as string not [int]
 
 ## [1.20.20210506.0] - 2021-05-06
 ### Added
