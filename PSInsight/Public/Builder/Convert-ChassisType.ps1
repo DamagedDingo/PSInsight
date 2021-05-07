@@ -7,7 +7,7 @@ function Convert-ChassisType {
 
     class Chassis {
         [string]$Type
-        [string]$ID
+        [int]$ID
         [string]$Category
     }
     

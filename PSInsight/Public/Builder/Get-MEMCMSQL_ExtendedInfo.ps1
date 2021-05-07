@@ -67,7 +67,7 @@ function Get-MEMCMSQL_ExtendedInfo {
             $Device | Add-Member -MemberType NoteProperty -Name 'v_GS_X86_PC_MEMORY' -Value $($v_GS_X86_PC_MEMORY | Where { $_.ResourceID -like $Device.ResourceID }) -Force
         
             if ($Device.v_GS_SYSTEM_ENCLOSURE.ChassisTypes0) {
-                $Chassis = Convert-ChassisType $Device.v_GS_SYSTEM_ENCLOSURE.ChassisTypes0
+                $Chassis = Convert-ChassisType [int]$Device.v_GS_SYSTEM_ENCLOSURE.ChassisTypes0
             }
             
             $Object = [PSCustomObject]@{
@@ -88,7 +88,7 @@ function Get-MEMCMSQL_ExtendedInfo {
         
                 # v_GS_SYSTEM_ENCLOSURE
                 "ChassisType" = $Chassis.Type
-                "ChassisTypeID" = $Chassis.ID
+                "ChassisTypeID" = [int]$Chassis.ID
                 "ChassisCategory" = $Chassis.Category
         
                 # v_GS_OPERATING_SYSTEM  

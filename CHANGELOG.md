@@ -10,6 +10,9 @@ Format as below (Requires the '### Added' as a header or task fails)
 ...- Update ReadMe.MD
 
 ## [Unreleased]
+### Added
+- Convert-ChassisType ID to accept [int]
+- Updated Get-MEMCMSQL_ExtendedInfo
 
 ## [1.20.20210506.0] - 2021-05-06
 ### Added
