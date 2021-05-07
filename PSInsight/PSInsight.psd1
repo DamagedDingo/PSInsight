@@ -12,7 +12,7 @@
 RootModule = 'PSInsight.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.21.20210507.0'
+ModuleVersion = '1.22.20210507.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -123,8 +123,8 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = 'Added
-- Convert-ChassisType ID to accept [int]
-- Updated Get-MEMCMSQL_ExtendedInfo'
+- Convert-ChassisType ID to accept [string]
+- Updated Get-MEMCMSQL_ExtendedInfo to accept [string] - SCCM stores as string not [int]'
 
         # Prerelease string of this module
         # Prerelease = ''
