@@ -10,6 +10,8 @@ Format as below (Requires the '### Added' as a header or task fails)
 ...- Update ReadMe.MD
 
 ## [Unreleased]
+
+## [1.24.20210511.0] - 2021-05-11
 ### Added
 - fix 'UniqueAttribute' in New-InsightObjectTypeAttributes and Set-InsightObjectTypeAttributes
 
@@ -144,7 +146,8 @@ Format as below (Requires the '### Added' as a header or task fails)
 
 ## [1.0.0] - 2020-10-15
 ### Added
-- Added to start versioning[Unreleased]: https://github.com/DamagedDingo/PSInsight/compare/1.23.20210511.0..HEAD
+- Added to start versioning[Unreleased]: https://github.com/DamagedDingo/PSInsight/compare/1.24.20210511.0..HEAD
+[1.24.20210511.0]: https://github.com/DamagedDingo/PSInsight/compare/1.23.20210511.0..1.24.20210511.0
 [1.23.20210511.0]: https://github.com/DamagedDingo/PSInsight/compare/1.22.20210507.0..1.23.20210511.0
 [1.22.20210507.0]: https://github.com/DamagedDingo/PSInsight/compare/1.21.20210507.0..1.22.20210507.0
 [1.21.20210507.0]: https://github.com/DamagedDingo/PSInsight/compare/1.20.20210506.0..1.21.20210507.0
