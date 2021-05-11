@@ -185,7 +185,7 @@ New-InsightObjectTypeAttributes -Name "Link to Parent" -Type Object -typeValue 2
                     $paramDictionary.Add($parameter.Name, $parameter)
         }
 
-        if ($Type -in "User") {
+        if ($Type -in "User","Status") {
             $parameter = [System.Management.Automation.RuntimeDefinedParameter]::new(
                         'typeValueMulti',
                         [array],

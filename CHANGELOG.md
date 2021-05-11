@@ -10,6 +10,8 @@ Format as below (Requires the '### Added' as a header or task fails)
 ...- Update ReadMe.MD
 
 ## [Unreleased]
+### Added
+- Added 'typeValueMulti' to status in New-InsightObjectTypeAttributes
 
 ## [1.22.20210507.0] - 2021-05-07
 ### Added
