@@ -107,6 +107,9 @@ Set-InsightObjectTypeAttributes -ParentObjectTypeId 2 -objectTypeAttributeId 30 
         [ValidateSet("Default", "Object", "User", "Confluence", "Group", "Status")]
         [string]$Type,
 
+        [Parameter(Mandatory = $false)]
+        [string]$uniqueAttribute,
+
         [ValidateNotNullOrEmpty()]
         [Alias('ApiKey')]
         [string]$InsightApiKey = $InsightApiKey

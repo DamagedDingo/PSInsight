@@ -10,6 +10,8 @@ Format as below (Requires the '### Added' as a header or task fails)
 ...- Update ReadMe.MD
 
 ## [Unreleased]
+### Added
+- Missing attribute 'uniqueAttribute' in New-InsightObjectTypeAttributes and Set-InsightObjectTypeAttributes
 
 ## [1.24.20210511.0] - 2021-05-11
 ### Added

@@ -111,6 +111,9 @@ New-InsightObjectTypeAttributes -Name "Link to Parent" -Type Object -typeValue 2
         [Alias('ObjectTypeId')]
         [int]$ParentObjectTypeId,
 
+        [Parameter(Mandatory = $false)]
+        [string]$uniqueAttribute,
+
         [ValidateNotNullOrEmpty()]
         [Alias('ApiKey')]
         [string]$InsightApiKey = $InsightApiKey
@@ -185,7 +188,7 @@ New-InsightObjectTypeAttributes -Name "Link to Parent" -Type Object -typeValue 2
                     $paramDictionary.Add($parameter.Name, $parameter)
         }
 
-        if ($Type -in "User","Status") {
+        if ($Type -in "User","status") {
             $parameter = [System.Management.Automation.RuntimeDefinedParameter]::new(
                         'typeValueMulti',
                         [array],
@@ -353,11 +356,11 @@ New-InsightObjectTypeAttributes -Name "Link to Parent" -Type Object -typeValue 2
         }
 
         # Add all the aditional Attributes. 
-        if ($PSBoundParameters["UniqueAttribute"]) {
-            $RequestBody.Add("UniqueAttribute", $PSBoundParameters["UniqueAttribute"])
+        if ($uniqueAttribute) {
+            $RequestBody.Add("uniqueAttribute", $UniqueAttribute)
         }
-        if ($PSBoundParameters["Description"]) {
-            $RequestBody.Add("Description", $PSBoundParameters["Description"])
+        if ($Description) {
+            $RequestBody.Add("Description", $Description)
         }
         if ($PSBoundParameters["minimumCardinality"]) {
             $RequestBody.Add("minimumCardinality", $PSBoundParameters["minimumCardinality"])
