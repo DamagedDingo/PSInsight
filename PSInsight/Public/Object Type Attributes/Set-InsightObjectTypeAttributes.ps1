@@ -481,8 +481,11 @@ Set-InsightObjectTypeAttributes -ParentObjectTypeId 2 -objectTypeAttributeId 30 
         }
 
         # Add all the aditional Attributes. 
-        if ($uniqueAttribute) {
-            $RequestBody.Add("uniqueAttribute", $UniqueAttribute)
+        if ($PSBoundParameters["UniqueAttribute"]) {
+            $RequestBody.Add("UniqueAttribute", $PSBoundParameters["UniqueAttribute"])
+        }
+        if ($PSBoundParameters["Description"]) {
+            $RequestBody.Add("Description", $PSBoundParameters["Description"])
         }
         if ($PSBoundParameters["minimumCardinality"]) {
             $RequestBody.Add("minimumCardinality", $PSBoundParameters["minimumCardinality"])
