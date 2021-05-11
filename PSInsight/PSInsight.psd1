@@ -12,7 +12,7 @@
 RootModule = 'PSInsight.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.24.20210511.0'
+ModuleVersion = '1.25.20210511.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -123,7 +123,7 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = 'Added
-- fix ''UniqueAttribute'' in New-InsightObjectTypeAttributes and Set-InsightObjectTypeAttributes'
+- Missing attribute ''uniqueAttribute'' in New-InsightObjectTypeAttributes and Set-InsightObjectTypeAttributes'
 
         # Prerelease string of this module
         # Prerelease = ''
