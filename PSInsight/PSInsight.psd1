@@ -113,10 +113,10 @@ PrivateData = @{
         Tags = 'Jira','Insight','PSInsight','API','CMDB','Asset'
 
         # A URL to the license for this module.
-        LicenseUri = 'https://github.com/AllElbows/PSInsight/blob/master/LICENSE'
+        LicenseUri = 'https://github.com/DamagedDingo/PSInsight/blob/master/LICENSE'
 
         # A URL to the main website for this project.
-        ProjectUri = 'https://github.com/AllElbows/PSInsight'
+        ProjectUri = 'https://github.com/DamagedDingo/PSInsight'
 
         # A URL to an icon representing this module.
         # IconUri = ''
